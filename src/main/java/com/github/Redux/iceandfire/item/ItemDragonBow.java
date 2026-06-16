@@ -2,6 +2,7 @@ package com.github.Redux.iceandfire.item;
 
 import com.github.Redux.iceandfire.IceAndFire;
 import com.github.Redux.iceandfire.entity.projectile.EntityDragonArrow;
+import net.minecraft.client.util.ITooltipFlag;
 import net.minecraft.enchantment.EnchantmentHelper;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.player.EntityPlayer;
@@ -12,10 +13,13 @@ import net.minecraft.init.SoundEvents;
 import net.minecraft.item.*;
 import net.minecraft.stats.StatList;
 import net.minecraft.util.*;
+import net.minecraft.util.text.TextFormatting;
 import net.minecraft.world.World;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 import net.minecraftforge.oredict.OreDictionary;
+import javax.annotation.Nullable;
+import java.util.List;
 /** Ítem Dragon Bow */
 
 
@@ -213,6 +217,19 @@ public class ItemDragonBow extends ItemBow implements ICustomRendered {
 	@Override
 	public int getMaxItemUseDuration(ItemStack stack) {
 		return 72000;
+	}
+
+	@Override
+	@SideOnly(Side.CLIENT)
+	public void addInformation(ItemStack stack, @Nullable World worldIn, List<String> tooltip, ITooltipFlag flagIn) {
+		tooltip.add(TextFormatting.GRAY + "Base Damage: 6");
+		if (type == EntityDragonArrow.Type.FIRE) {
+			tooltip.add(TextFormatting.RED + "Sets targets on fire");
+		} else if (type == EntityDragonArrow.Type.ICE) {
+			tooltip.add(TextFormatting.AQUA + "Freezes and slows targets");
+		} else if (type == EntityDragonArrow.Type.LIGHTNING) {
+			tooltip.add(TextFormatting.LIGHT_PURPLE + "Strikes targets with lightning");
+		}
 	}
 
 	@Override
