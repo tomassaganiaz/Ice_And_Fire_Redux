@@ -2,7 +2,7 @@
 
 **Dragons, Hippogryphs, Pixies, Oh my!**
 
-Fork del Ice and Fire original por alexthe666, enfocado en RLCraft 1.12.2. Este fork consolida código duplicado, agrega compatibilidad con mods (Tinker's Construct, Construct's Armory, Spartan Weaponry), e implementa mecánicas nuevas como el baño de sangre de dragón y chain lightning.
+Fork del Ice and Fire original por alexthe666, enfocado en RLCraft 1.12.2. Este fork consolida código duplicado, agrega compatibilidad con mods (Tinker's Construct, Construct's Armory, Spartan Weaponry), e implementa mecánicas nuevas como el baño de sangre de dragón y chain lightning. ¡Y muchos dragones nuevos planeados: Wither, Veneno, Esqueleto, Agua, Tierra y Viento!
 
 ---
 
