@@ -1,0 +1,35 @@
+{
+  "modifier": "lightning",
+  "text": [
+    {
+      "text": "A coating of Lightning Dragon's blood imbues the tool with the power to strike foes with chain lightning."
+    },
+    {
+      "text": "\n"
+    },
+    {
+      "text": "Cannot be applied to dragonsteel tools. Chain lightning bounces between nearby mobs."
+    },
+    {
+      "text": "\n"
+    }
+  ],
+  "effects": [
+    "33% chance to strike chain lightning",
+    "Lightning bounces between nearby enemies",
+    "Deals extra dragon lightning damage",
+    "Single Level Only"
+  ],
+  "demoTool": [
+    "tconstruct:broadsword",
+    "tconstruct:cleaver",
+    "tconstruct:hammer",
+    "tconstruct:arrow",
+    "tconstruct:longsword",
+    "tconstruct:shortbow",
+    "tconstruct:frypan",
+    "tconstruct:crossbow",
+    "tconstruct:scythe",
+    "tconstruct:shuriken"
+  ]
+}

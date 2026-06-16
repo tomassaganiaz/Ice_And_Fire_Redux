@@ -9,6 +9,10 @@
   },
   {
     "type": "modifier",
+    "data": "modifiers/lightning.json"
+  },
+  {
+    "type": "modifier",
     "data": "modifiers/fire_armor.json"
   },
   {
