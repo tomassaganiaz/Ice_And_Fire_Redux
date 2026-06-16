@@ -282,6 +282,53 @@ Del plan original (~17-22 días, 203 archivos), queda **~65% pendiente**:
 
 ---
 
+## 🆕 Dragones Planeados (futuro)
+
+### Dragón de Veneno
+- **Spawn:** Biomas de jungla y pantanos
+- **Ataque:** Aliento tóxico — Veneno II
+- **Comportamiento:** Territorial. Enemigo de dragones eléctricos
+- **Drop:** Escamas verdes → pociones y armas envenenadas
+- **Implementación:** Nuevo `EnumDragonType.POISON`, `EntityPoisonDragon`, el tipo se agrega al switch de `DragonExplosion`
+
+### Dragón de Wither
+- **Spawn:** Nether, cerca de fortalezas
+- **Ataque:** Aliento oscuro — Wither II
+- **Comportamiento:** El más fuerte. Hostil a todo excepto dragones esqueleto/wither
+- **Drop:** Escamas negras → armas con efecto Wither
+- **Implementación:** `EnumDragonType.WITHER`, `EntityWitherDragon`, switch en `DragonExplosion`
+
+### Dragones Esqueleto (4 variantes)
+- **Mecánica:** Fingen estar muertos hasta que el jugador se acerca
+- **Desierto/Badlands:** Mordida física. Climas cálidos
+- **Wither:** Golpes con Wither I. Cerca de fortalezas del Nether
+- **Pantanoso:** Golpes con Veneno I. Semienterrado en barro
+- **Ártico:** Golpes con Congelamiento + Lentitud II. Cubierto de escarcha
+- **Implementación:** `EntitySkeletonDragon` base con `EnumSkeletonType`
+
+### Dragón de Agua
+- **Spawn:** Océanos y ríos grandes
+- **Ataque:** Chorro de agua + mordida. Emboscada desde abajo
+- **Drop:** Escamas azules → armaduras con respiración acuática
+- **Implementación:** `EnumDragonType.WATER`, `EntityWaterDragon`
+
+### Dragón de Tierra
+- **Spawn:** Montañas y cuevas profundas
+- **Ataque:** Aliento de polvo — Ceguera I. Excava túneles
+- **Drop:** Escamas marrones → armaduras con resistencia extra
+- **Implementación:** `EnumDragonType.EARTH`, `EntityEarthDragon`
+
+### Dragón de Viento
+- **Spawn:** Altas montañas y biomas elevados
+- **Ataque:** Ráfagas de viento — empuje + daño por caída
+- **Habilidad:** Vuelo x1.5 más rápido que otros dragones
+- **Drop:** Escamas plateadas → armas con knockback mejorado
+- **Implementación:** `EnumDragonType.WIND`, `EntityWindDragon`
+
+> **Ventaja de la consolidación:** `DragonExplosion`, `EntityDragonBreathProjectile` y `EntityDragonChargeProjectile` ya usan `EnumDragonType` con switch. Agregar un tipo nuevo solo requiere agregar el caso al switch — no crear explosiones ni proyectiles nuevos.
+
+---
+
 ## Opinión Sincera
 
 **El proyecto está en un estado "compila pero no sé si funciona".**
