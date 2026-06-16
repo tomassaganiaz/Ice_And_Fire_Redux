@@ -116,6 +116,7 @@ public class CommonProxy {
         registerUnspawnable(EntityEntryBuilder.<EntityDragonLightningCharge>create(), event, EntityDragonLightningCharge.class, "dragonlightningcharge", 12, 80);
         registerSpawnable(EntityEntryBuilder.<EntityBlackFrostDragon>create(), event, EntityBlackFrostDragon.class, "black_frost", 56, 0XE0E6E6, 0XB5DDFB, 128);
         registerSpawnable(EntityEntryBuilder.<EntityShivaxiDragon>create(), event, EntityShivaxiDragon.class, "shivaxi_dragon", 58, 0x1591EA, 0X0E65A3, 128);
+        registerSpawnable(EntityEntryBuilder.<EntityWitherDragon>create(), event, EntityWitherDragon.class, "witherdragon", 60, 0X1A1A1A, 0X4A4A4A, 128);
         registerUnspawnable(EntityEntryBuilder.<EntityShivaxiDragonLightning>create(), event, EntityShivaxiDragonLightning.class, "shivaxi_dragon_lightning", 59, 80);
         registerUnspawnable(EntityEntryBuilder.<EntityDragonBreath>create(), event, EntityDragonBreath.class, "dragon_breath", 61, 64);
     }

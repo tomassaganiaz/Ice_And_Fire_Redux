@@ -7,6 +7,8 @@ import com.github.Redux.iceandfire.misc.IafSoundRegistry;
 import com.github.Redux.iceandfire.entity.EntityDragonEgg;
 import com.github.Redux.iceandfire.entity.EntityFireDragon;
 import com.github.Redux.iceandfire.entity.EntityLightningDragon;
+import com.github.Redux.iceandfire.entity.EntityIceDragon;
+import com.github.Redux.iceandfire.entity.EntityWitherDragon;
 import com.github.Redux.iceandfire.entity.tile.TileEntityEggInIce;
 import net.minecraft.block.material.Material;
 import net.minecraft.init.SoundEvents;
@@ -96,6 +98,34 @@ public enum EnumDragonType {
 
         private boolean meetsEggCondition(EntityDragonEgg egg, BlockPos pos) {
             return egg.world.isRainingAt(pos) || egg.world.isRainingAt(pos.add(0, egg.height, 0));
+        }
+    },
+    WITHER("wither") {
+
+        @Override
+        public void updateEggCondition(EntityDragonEgg egg) {
+            BlockPos pos = new BlockPos(egg);
+            if(!meetsEggCondition(egg, pos)) return;
+            egg.setDragonAge(egg.getDragonAge() + 1);
+            if(egg.getDragonAge() > IceAndFireConfig.DRAGON_SETTINGS.dragonEggTime) {
+                egg.world.setBlockToAir(pos);
+                EntityWitherDragon dragon = new EntityWitherDragon(egg.world);
+                if(egg.hasCustomName()) dragon.setCustomNameTag(egg.getCustomNameTag());
+                dragon.setVariant(egg.getType().meta % 4);
+                dragon.setGender(egg.world.rand.nextBoolean());
+                dragon.setPosition(pos.getX() + 0.5, pos.getY() + 1, pos.getZ() + 0.5);
+                dragon.setHunger(50);
+                if(!egg.world.isRemote) egg.world.spawnEntity(dragon);
+                dragon.setTamed(true);
+                dragon.setOwnerId(egg.getOwnerId());
+                egg.world.playSound(egg.posX, egg.posY + egg.getEyeHeight(), egg.posZ, SoundEvents.ENTITY_WITHER_SPAWN, egg.getSoundCategory(), 2.5F, 1.0F, false);
+                egg.world.playSound(egg.posX, egg.posY + egg.getEyeHeight(), egg.posZ, IafSoundRegistry.DRAGON_HATCH, egg.getSoundCategory(), 2.5F, 1.0F, false);
+                egg.setDead();
+            }
+        }
+
+        private boolean meetsEggCondition(EntityDragonEgg egg, BlockPos pos) {
+            return egg.world.provider.isNether() && egg.world.getBlockState(pos.down()).getMaterial() == Material.ROCK;
         }
     };
 
