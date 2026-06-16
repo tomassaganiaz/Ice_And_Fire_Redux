@@ -15,16 +15,21 @@ public class EnchantmentDragonSlayer extends Enchantment {
 
 	@Override
 	public int getMinEnchantability(int level) {
-		return 5 + (level - 1) * 10;
+		return 30;
 	}
 
 	@Override
 	public int getMaxEnchantability(int level) {
-		return this.getMinEnchantability(level) + 20;
+		return 60;
 	}
 
 	@Override
 	public int getMaxLevel() {
 		return 3;
+	}
+
+	@Override
+	public boolean isTreasureEnchantment() {
+		return true;
 	}
 }
