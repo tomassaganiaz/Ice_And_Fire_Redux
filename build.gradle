@@ -20,6 +20,7 @@ minecraft {
         client {
             args "--username=InDev"
 
+            jvmArg "-Xmx3G"
             jvmArg "-Dfml.coreMods.load=${mixin_loader_class}"
             jvmArg "-Dmixin.hotSwap=true"
             jvmArg "-Dmixin.checks.interfaces=true"

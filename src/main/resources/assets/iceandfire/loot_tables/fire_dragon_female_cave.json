@@ -231,22 +231,20 @@
           ],
           "weight": 7
         },
-                {
+        {
           "type": "item",
           "name": "minecraft:enchanted_book",
           "weight": 1,
           "functions": [
             {
-              "function": "set_count",
-              "count": { "min": 1, "max": 1 }
-            },
-            {
-              "function": "iceandfire:customize_to_dragon",
-              "conditions": []
+              "function": "set_nbt",
+              "tag": "{StoredEnchantments:[{id:\"iceandfire:dragon_slayer\",lvl:1}]}"
             }
           ]
         },
-,
+        {
+          "type": "item",
+          "name": "minecraft:experience_bottle",
           "functions": [
             {
               "function": "set_count",
