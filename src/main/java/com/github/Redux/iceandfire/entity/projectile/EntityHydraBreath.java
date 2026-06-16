@@ -1,0 +1,110 @@
+package com.github.Redux.iceandfire.entity.projectile;
+
+import com.github.Redux.iceandfire.IceAndFire;
+import com.github.Redux.iceandfire.IceAndFireConfig;
+import com.github.Redux.iceandfire.core.ModPotions;
+import com.github.Redux.iceandfire.entity.EntityHydra;
+import com.github.Redux.iceandfire.entity.EntityHydraHead;
+import com.github.Redux.iceandfire.enums.EnumParticle;
+import net.minecraft.block.material.Material;
+import net.minecraft.entity.EntityLivingBase;
+import net.minecraft.entity.projectile.ProjectileHelper;
+import net.minecraft.init.SoundEvents;
+import net.minecraft.potion.PotionEffect;
+import net.minecraft.util.DamageSource;
+import net.minecraft.util.EnumParticleTypes;
+import net.minecraft.util.math.BlockPos;
+import net.minecraft.util.math.MathHelper;
+import net.minecraft.util.math.RayTraceResult;
+import net.minecraft.world.World;
+/** Entidad Hydra Breath */
+
+
+public class EntityHydraBreath extends EntityDragonProjectile {
+
+    public EntityHydraBreath(World worldIn) {
+        super(worldIn);
+    }
+
+    public EntityHydraBreath(World worldIn, double posX, double posY, double posZ, double accelX, double accelY, double accelZ) {
+        super(worldIn, posX, posY, posZ, accelX, accelY, accelZ);
+    }
+
+    public EntityHydraBreath(World worldIn, EntityHydra shooter, double accelX, double accelY, double accelZ) {
+        super(worldIn, shooter, accelX, accelY, accelZ);
+        this.setSize(0.95F, 0.95F);
+        double d0 = MathHelper.sqrt(accelX * accelX + accelY * accelY + accelZ * accelZ);
+        this.accelerationX = accelX / d0 * 0.1D;
+        this.accelerationY = accelY / d0 * 0.1D;
+        this.accelerationZ = accelZ / d0 * 0.1D;
+    }
+
+    @Override
+    public void onUpdate() {
+        if (this.ticksExisted > 20) {
+            this.setDead();
+        }
+        if (this.world.isRemote || (this.shootingEntity == null || !this.shootingEntity.isDead) && this.world.isBlockLoaded(new BlockPos(this))) {
+            if (!this.world.isRemote) {
+                this.setFlag(6, this.isGlowing());
+            }
+            this.onEntityUpdate();
+            RayTraceResult raytraceresult = ProjectileHelper.forwardsRaycast(this, true, false, this.getShootingEntity());
+            if (raytraceresult != null && !net.minecraftforge.event.ForgeEventFactory.onProjectileImpact(this, raytraceresult)) {
+                this.onImpact(raytraceresult);
+            }
+
+            accelerationX *= 0.95D;
+            accelerationY *= 0.95D;
+            accelerationZ *= 0.95D;
+            ProjectileHelper.rotateTowardsMovement(this, 0.2F);
+            float f = this.getMotionFactor();
+            if (this.world.isRemote) {
+                for (int i = 0; i < 15; ++i) {
+                    IceAndFire.PROXY.spawnParticle(EnumParticle.HYDRA_BREATH, this.world, this.posX + (double) (this.rand.nextFloat() * this.width) - (double) this.width * 0.5F, this.posY - 0.5D, this.posZ + (double) (this.rand.nextFloat() * this.width) - (double) this.width * 0.5F, 0.1D, 1.0D, 0.1D);
+                }
+            }
+            this.motionX += this.accelerationX;
+            this.motionY += this.accelerationY;
+            this.motionZ += this.accelerationZ;
+            this.motionX *= f;
+            this.motionY *= f;
+            this.motionZ *= f;
+            this.posX += this.motionX;
+            this.posY += this.motionY;
+            this.posZ += this.motionZ;
+            this.setPosition(this.posX, this.posY, this.posZ);
+        } else {
+            this.playSound(SoundEvents.ENTITY_HUSK_AMBIENT, 1F, this.rand.nextFloat());
+            this.setDead();
+        }
+    }
+
+    @Override
+    public boolean isInWater() {
+        return this.isInsideOfMaterial(Material.WATER);
+    }
+
+    @Override
+    public boolean handleWaterMovement() {
+        return true;
+    }
+
+    @Override
+    protected EnumParticleTypes getParticleType() {
+        return EnumParticleTypes.WATER_SPLASH;
+    }
+
+
+    @Override
+    protected void onImpact(RayTraceResult result) {
+        if (result.entityHit != null && !result.entityHit.isEntityEqual(this.shootingEntity) && !(result.entityHit instanceof EntityHydraHead) && !(result.entityHit instanceof EntityHydraBreath)) {
+            result.entityHit.attackEntityFrom(DamageSource.causeMobDamage(this.shootingEntity), IceAndFireConfig.ENTITY_SETTINGS.hydraBreathAttackDamage);
+            if (result.entityHit instanceof EntityLivingBase) {
+                ((EntityLivingBase) result.entityHit).addPotionEffect(new PotionEffect(ModPotions.acid, 60));
+            }
+            this.setDead();
+        }
+    }
+}
+

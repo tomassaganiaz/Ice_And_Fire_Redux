@@ -1,0 +1,25 @@
+package com.github.Redux.iceandfire.enums;
+/** EnumParticle — Enum Particle */
+
+
+public enum EnumParticle {
+    DRAGON_FIRE,
+    DRAGON_ICE,
+    FLAME,
+    LAVA,
+    SNOWFLAKE,
+    SPARK,
+    HYDRA_BREATH,
+    BLOOD,
+    PIXIE_DUST,
+    SIREN_APPEARANCE,
+    SIREN_MUSIC,
+    SERPENT_BUBBLE,
+    EXPLOSION,
+    CLOUD,
+    SMOKE_NORMAL,
+    SMOKE_LARGE,
+    DREAD_TORCH,
+    GHOST_APPEARANCE,
+    REDSTONE
+}

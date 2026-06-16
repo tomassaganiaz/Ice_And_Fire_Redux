@@ -1,0 +1,28 @@
+{
+  "modifier": "dragonblood_lightning_resist",
+  "text": [
+    {
+      "text": "Coating armor with Lightning Dragon blood grants the wearer resistance to electrical attacks."
+    },
+    {
+      "text": "\n"
+    },
+    {
+      "text": "Reduces lightning and chain lightning damage by 75% while worn."
+    },
+    {
+      "text": "\n"
+    }
+  ],
+  "effects": [
+    "75% lightning damage reduction while worn",
+    "Cannot stack with multiple pieces",
+    "Single piece per set"
+  ],
+  "demoTool": [
+    "tconstruct:helmet",
+    "tconstruct:chestplate",
+    "tconstruct:leggings",
+    "tconstruct:boots"
+  ]
+}

@@ -1,0 +1,28 @@
+{
+  "modifier": "dragonblood_ice_resist",
+  "text": [
+    {
+      "text": "Coating armor with Ice Dragon blood grants the wearer immunity to freezing and slowness."
+    },
+    {
+      "text": "\n"
+    },
+    {
+      "text": "Continuously clears Slowness effects while the armor is worn."
+    },
+    {
+      "text": "\n"
+    }
+  ],
+  "effects": [
+    "Clears Slowness effects while worn",
+    "Cannot stack with multiple pieces",
+    "Single piece per set"
+  ],
+  "demoTool": [
+    "tconstruct:helmet",
+    "tconstruct:chestplate",
+    "tconstruct:leggings",
+    "tconstruct:boots"
+  ]
+}

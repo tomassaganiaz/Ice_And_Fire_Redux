@@ -1,0 +1,69 @@
+package com.github.Redux.iceandfire.structures;
+
+import com.github.Redux.iceandfire.block.IafBlockRegistry;
+import com.github.Redux.iceandfire.entity.EntityDragonBase;
+import com.github.Redux.iceandfire.entity.EntityFireDragon;
+import net.minecraft.block.Block;
+import net.minecraft.block.BlockContainer;
+import net.minecraft.block.material.Material;
+import net.minecraft.block.state.IBlockState;
+import net.minecraft.init.Blocks;
+import net.minecraft.util.ResourceLocation;
+import net.minecraft.util.math.BlockPos;
+import net.minecraft.world.World;
+/** WorldGenFireDragonRoost — World Gen Fire Dragon Roost */
+
+
+public class WorldGenFireDragonRoost extends WorldGenDragonRoost {
+
+    protected void transformState(World world, BlockPos blockpos, IBlockState state) {
+        if (state.getBlock() instanceof BlockContainer) {
+            return;
+        }
+        if (state.getMaterial() == Material.GRASS && state.getBlock() == Blocks.GRASS) {
+            world.setBlockState(blockpos, IafBlockRegistry.charedGrass.getDefaultState(), 2);
+        } else if (state.getMaterial() == Material.GRASS || state.getMaterial() == Material.GROUND && state.getBlock() == Blocks.DIRT) {
+            world.setBlockState(blockpos, IafBlockRegistry.charedDirt.getDefaultState(), 2);
+        } else if (state.getMaterial() == Material.GROUND && state.getBlock() == Blocks.GRAVEL) {
+            world.setBlockState(blockpos, IafBlockRegistry.charedGravel.getDefaultState(), 2);
+        } else if (state.getMaterial() == Material.ROCK && (state.getBlock() == Blocks.COBBLESTONE || state.getBlock().getTranslationKey().contains("cobblestone"))) {
+            world.setBlockState(blockpos, IafBlockRegistry.charedCobblestone.getDefaultState(), 2);
+        } else if (state.getMaterial() == Material.ROCK && state.getBlock() != IafBlockRegistry.charedCobblestone) {
+            world.setBlockState(blockpos, IafBlockRegistry.charedStone.getDefaultState(), 2);
+        } else if (state.getBlock() == Blocks.GRASS_PATH) {
+            world.setBlockState(blockpos, IafBlockRegistry.charedGrassPath.getDefaultState(), 2);
+        } else if (state.getMaterial() == Material.WOOD || state.getMaterial() == Material.SAND) {
+            world.setBlockState(blockpos, IafBlockRegistry.ash.getDefaultState(), 2);
+        } else if (state.getMaterial() == Material.LEAVES || state.getMaterial() == Material.PLANTS) {
+            world.setBlockState(blockpos, Blocks.AIR.getDefaultState(), 2);
+        }
+    }
+
+    protected IBlockState getPileBlock() {
+        return IafBlockRegistry.goldPile.getDefaultState();
+    }
+
+    protected IBlockState getBuildingBlock() {
+        return IafBlockRegistry.charedCobblestone.getDefaultState();
+    }
+
+    protected Block[] getDragonTransformedBlocks() {
+        return new Block[] {
+                IafBlockRegistry.charedGrass,
+                IafBlockRegistry.charedDirt,
+                IafBlockRegistry.charedGravel,
+                IafBlockRegistry.charedGrassPath,
+                IafBlockRegistry.charedStone,
+                IafBlockRegistry.charedCobblestone,
+                IafBlockRegistry.ash
+        };
+    }
+
+    protected ResourceLocation getLootTable() {
+        return WorldGenFireDragonCave.FIREDRAGON_CHEST;
+    }
+
+    protected EntityDragonBase createDragon(World worldIn) {
+        return new EntityFireDragon(worldIn);
+    }
+}

@@ -1,0 +1,41 @@
+  Por muito tempo nós ouvimos contos
+de reptéis gigantes na qual seriam
+encarnações de dois elementos 
+primordiais; fogo e gelo. Espalhou-se
+a notícia de uma criatura semelhante
+que supostamente residiria em biomas
+exóticos - o dragão elétrico.
+
+
+<image><drawings_lightningdragon.png 0 80 0 0 194 93 1>
+
+
+
+
+
+
+Assombrando os céus obscuros 
+de selvas, o dragão elétrico
+é noturno, diferentemente de
+seus primos. Esses dragões
+habitam poleiros ou cavernas
+subterrâneas cheias de blocos
+quebrados, destruídos por raios.
+Assim como os dragões de gelo
+e fogo, os dragões elétricos
+possuem pedras preciosas, em
+seu caso ametistas e diamantes.
+
+<item><iceandfire:amethyst_gem 100 170 36 1>
+<item><iceandfire:amethyst_ore 100 150 36 1>
+
+
+
+Além de serem encontrados em selvas,
+há relatos de dragões relâmpago sendo
+avistados fora das selvas: em montanhas
+altas, em desfiladeiros profundos, em
+terras áridas e até mesmo durante
+tempestades. No entanto, esses
+relatórios não foram confirmados
+

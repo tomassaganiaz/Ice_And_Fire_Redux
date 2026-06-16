@@ -1,0 +1,40 @@
+<item><iceandfire:hydra_fang 0 35 4 1.25>
+<item><iceandfire:hydra_heart 0 110 4 1.25>
+
+
+
+A presa da hidra é um item valioso
+que pode ser usado para criar 
+flechas especiais que envenenam
+seus alvos.
+<item><iceandfire:hydra_arrow 0 34 40 1.25>
+
+
+
+
+
+
+
+
+Essas flechas também têm uma segunda
+propiedade importante: quando atingem
+suas vítimas, elas sugarão a vida do 
+alvo e irão curar o atirador.
+
+
+
+
+
+
+
+
+
+O coração de hidra é um item raro
+da fera, amplamente cobiçado por
+suas propriedades regenerativas.
+
+O poderoso coração dessa criatura
+torna a difícil batalha muito
+recompensadora — e talvez explique
+por que a caverna da Hidra contém
+tantos ossos.

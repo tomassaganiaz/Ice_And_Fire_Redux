@@ -1,0 +1,66 @@
+package com.github.Redux.iceandfire.item;
+
+import com.github.Redux.iceandfire.client.StatCollector;
+import com.github.Redux.iceandfire.entity.EntityDragonEgg;
+import com.github.Redux.iceandfire.enums.EnumDragonEgg;
+import net.minecraft.client.util.ITooltipFlag;
+import net.minecraft.entity.player.EntityPlayer;
+import net.minecraft.item.ItemStack;
+import net.minecraft.nbt.NBTTagCompound;
+import net.minecraft.util.EnumActionResult;
+import net.minecraft.util.EnumFacing;
+import net.minecraft.util.EnumHand;
+import net.minecraft.util.math.BlockPos;
+import net.minecraft.util.text.TextFormatting;
+import net.minecraft.world.World;
+import net.minecraftforge.fml.relauncher.Side;
+import net.minecraftforge.fml.relauncher.SideOnly;
+
+import javax.annotation.Nullable;
+import java.util.List;
+/** Ítem Dragon Egg */
+
+
+public class ItemDragonEgg extends ItemGeneric {
+
+	public final EnumDragonEgg type;
+
+	public ItemDragonEgg(EnumDragonEgg type) {
+		super("dragonegg_" + type.resourceName, "iceandfire.dragonegg");
+		this.type = type;
+		this.maxStackSize = 1;
+	}
+
+	@Override
+	public void onCreated(ItemStack itemStack, World world, EntityPlayer player) {
+		itemStack.setTagCompound(new NBTTagCompound());
+	}
+
+	@Override
+	@SideOnly(Side.CLIENT)
+	public void addInformation(ItemStack stack, @Nullable World worldIn, List<String> tooltip, ITooltipFlag flagIn) {
+		tooltip.add(type.color + StatCollector.translateToLocal("dragon." + type.resourceName));
+	}
+
+	@Override
+	public EnumActionResult onItemUse(EntityPlayer player, World worldIn, BlockPos pos, EnumHand hand, EnumFacing facing, float hitX, float hitY, float hitZ) {
+		if (facing != EnumFacing.UP) {
+			return EnumActionResult.PASS;
+		} else {
+			EntityDragonEgg egg = new EntityDragonEgg(worldIn);
+			egg.setType(type);
+			egg.setPosition(pos.getX() + 0.5, pos.getY() + 1, pos.getZ() + 0.5);
+			egg.onPlayerPlace(player);
+			if (!worldIn.isRemote) {
+				worldIn.spawnEntity(egg);
+			}
+			ItemStack itemstack = player.getHeldItem(hand);
+
+			if (!player.capabilities.isCreativeMode) {
+				itemstack.shrink(1);
+			}
+			return EnumActionResult.SUCCESS;
+
+		}
+	}
+}

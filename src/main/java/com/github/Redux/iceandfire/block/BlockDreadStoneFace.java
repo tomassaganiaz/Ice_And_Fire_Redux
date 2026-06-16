@@ -1,0 +1,80 @@
+package com.github.Redux.iceandfire.block;
+
+import com.github.Redux.iceandfire.IceAndFire;
+import net.minecraft.block.BlockHorizontal;
+import net.minecraft.block.SoundType;
+import net.minecraft.block.material.Material;
+import net.minecraft.block.state.BlockStateContainer;
+import net.minecraft.block.state.IBlockState;
+import net.minecraft.entity.EntityLivingBase;
+import net.minecraft.entity.player.EntityPlayer;
+import net.minecraft.util.BlockRenderLayer;
+import net.minecraft.util.EnumFacing;
+import net.minecraft.util.Mirror;
+import net.minecraft.util.Rotation;
+import net.minecraft.util.math.BlockPos;
+import net.minecraft.world.IBlockAccess;
+import net.minecraft.world.World;
+import net.minecraftforge.fml.relauncher.Side;
+import net.minecraftforge.fml.relauncher.SideOnly;
+/** Bloque Dread Stone Face */
+
+
+public class BlockDreadStoneFace extends BlockHorizontal implements IDragonProof, IDreadBlock {
+
+    public BlockDreadStoneFace() {
+        super(Material.ROCK);
+        this.setDefaultState(this.blockState.getBaseState().withProperty(FACING, EnumFacing.NORTH).withProperty(PLAYER_PLACED, Boolean.FALSE));
+        this.setTranslationKey("iceandfire.dread_stone_face");
+        this.setHarvestLevel("pickaxe", 3);
+        this.setHardness(20F);
+        this.setResistance(10000F);
+        this.setSoundType(SoundType.STONE);
+        this.setCreativeTab(IceAndFire.TAB_BLOCKS);
+        this.setRegistryName(IceAndFire.MODID, "dread_stone_face");
+    }
+
+    @Override
+    public float getBlockHardness(IBlockState blockState, World worldIn, BlockPos pos) {
+        return blockState.getValue(PLAYER_PLACED) ? super.getBlockHardness(blockState, worldIn, pos) : -1;
+    }
+
+    public IBlockState withRotation(IBlockState state, Rotation rot) {
+        return state.withProperty(FACING, rot.rotate(state.getValue(FACING)));
+    }
+
+    public IBlockState withMirror(IBlockState state, Mirror mirrorIn) {
+        return state.withRotation(mirrorIn.toRotation(state.getValue(FACING)));
+    }
+
+    public IBlockState getStateForPlacement(World worldIn, BlockPos pos, EnumFacing facing, float hitX, float hitY, float hitZ, int meta, EntityLivingBase placer) {
+        return this.getDefaultState().withProperty(FACING, placer.getHorizontalFacing().getOpposite()).withProperty(PLAYER_PLACED, true);
+    }
+
+    public IBlockState getStateFromMeta(int meta) {
+        return this.getDefaultState().withProperty(FACING, EnumFacing.byHorizontalIndex(meta % 4)).withProperty(PLAYER_PLACED, (meta / 4 == 0));
+    }
+
+    public int getMetaFromState(IBlockState state) {
+        return (state.getValue(PLAYER_PLACED) ? 0 : 4) + state.getValue(FACING).getHorizontalIndex();
+    }
+
+    protected BlockStateContainer createBlockState() {
+        return new BlockStateContainer(this, FACING, PLAYER_PLACED);
+    }
+
+    @Override
+    @SideOnly(Side.CLIENT)
+    public BlockRenderLayer getRenderLayer() {
+        return BlockRenderLayer.CUTOUT;
+    }
+
+    @Override
+    public boolean canHarvestBlock(IBlockAccess world, BlockPos pos, EntityPlayer player) {
+        IBlockState state = world.getBlockState(pos);
+        if (IDreadBlock.isIndestructible(state)) {
+            return player.capabilities.isCreativeMode;
+        }
+        return super.canHarvestBlock(world, pos, player);
+    }
+}

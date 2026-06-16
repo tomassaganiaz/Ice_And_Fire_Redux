@@ -1,0 +1,66 @@
+package com.github.Redux.iceandfire.block;
+
+import net.minecraft.block.SoundType;
+import net.minecraft.block.material.Material;
+import net.minecraft.block.state.BlockStateContainer;
+import net.minecraft.block.state.IBlockState;
+import net.minecraft.entity.EntityLivingBase;
+import net.minecraft.entity.player.EntityPlayer;
+import net.minecraft.util.EnumFacing;
+import net.minecraft.util.math.BlockPos;
+import net.minecraft.world.IBlockAccess;
+import net.minecraft.world.World;
+/** Bloque Dread Base */
+
+
+public class BlockDreadBase extends BlockGeneric implements IDragonProof, IDreadBlock {
+
+    public BlockDreadBase(Material materialIn, String gameName, String name, String toolUsed, int toolStrength, float hardness, float resistance, SoundType sound) {
+        super(materialIn, gameName, name, toolUsed, toolStrength, hardness, resistance, sound);
+        this.setDefaultState(this.blockState.getBaseState().withProperty(PLAYER_PLACED, Boolean.FALSE));
+    }
+
+    public BlockDreadBase(Material materialIn, String gameName, String name, String toolUsed, int toolStrength, float hardness, float resistance, SoundType sound, boolean slippery) {
+        super(materialIn, gameName, name, toolUsed, toolStrength, hardness, resistance, sound, slippery);
+        this.setDefaultState(this.blockState.getBaseState().withProperty(PLAYER_PLACED, Boolean.FALSE));
+    }
+
+    public BlockDreadBase(Material materialIn, String gameName, String name, float hardness, float resistance, SoundType sound) {
+        super(materialIn, gameName, name, hardness, resistance, sound);
+        this.setDefaultState(this.blockState.getBaseState().withProperty(PLAYER_PLACED, Boolean.FALSE));
+    }
+
+    @Override
+    public float getBlockHardness(IBlockState blockState, World worldIn, BlockPos pos) {
+        return blockState.getValue(PLAYER_PLACED) ? super.getBlockHardness(blockState, worldIn, pos) : -1;
+    }
+
+    @Override
+    public IBlockState getStateFromMeta(int meta) {
+        return this.getDefaultState().withProperty(PLAYER_PLACED, meta > 0);
+    }
+
+    @Override
+    public int getMetaFromState(IBlockState state) {
+        return state.getValue(PLAYER_PLACED) ? 1 : 0;
+    }
+
+    @Override
+    protected BlockStateContainer createBlockState() {
+        return new BlockStateContainer(this, PLAYER_PLACED);
+    }
+
+    @Override
+    public IBlockState getStateForPlacement(World worldIn, BlockPos pos, EnumFacing facing, float hitX, float hitY, float hitZ, int meta, EntityLivingBase placer) {
+        return this.getDefaultState().withProperty(PLAYER_PLACED, Boolean.TRUE);
+    }
+
+    @Override
+    public boolean canHarvestBlock(IBlockAccess world, BlockPos pos, EntityPlayer player) {
+        IBlockState state = world.getBlockState(pos);
+        if (IDreadBlock.isIndestructible(state)) {
+            return player.capabilities.isCreativeMode;
+        }
+        return super.canHarvestBlock(world, pos, player);
+    }
+}

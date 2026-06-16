@@ -1,0 +1,23 @@
+package com.github.Redux.iceandfire.client.particle;
+
+import net.minecraft.client.particle.ParticleRedstone;
+import net.minecraft.world.World;
+import net.minecraftforge.fml.relauncher.Side;
+import net.minecraftforge.fml.relauncher.SideOnly;
+
+/** ParticlePixieDust — Particle Pixie Dust */
+
+@SideOnly(Side.CLIENT)
+public class ParticlePixieDust extends ParticleRedstone {
+
+	public ParticlePixieDust(World worldIn, double xCoordIn, double yCoordIn, double zCoordIn, float colorR, float colorG, float colorB) {
+		super(worldIn, xCoordIn, yCoordIn, zCoordIn, colorR, colorG, colorB);
+		this.particleAlpha = 1F;
+	}
+
+	public int getBrightnessForRender(float f) {
+		int i = super.getBrightnessForRender(f);
+		int k = i >> 16 & 255;
+		return 240 | k << 16;
+	}
+}

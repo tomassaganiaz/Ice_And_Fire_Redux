@@ -1,0 +1,22 @@
+{
+  "type": "forge:ore_shaped",
+  "pattern": [
+    "CC",
+    "CB",
+    " B"
+  ],
+  "key": {
+    "C": {
+      "item": "iceandfire:myrmex_desert_chitin",
+      "data": 0
+    },
+    "B": {
+      "type": "forge:ore_dict",
+      "ore": "boneWither"
+    }
+  },
+  "result": {
+    "item": "iceandfire:myrmex_desert_axe",
+    "data": 0
+  }
+}

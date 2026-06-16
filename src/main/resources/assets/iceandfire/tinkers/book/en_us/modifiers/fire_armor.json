@@ -1,0 +1,28 @@
+{
+  "modifier": "dragonblood_fire_resist",
+  "text": [
+    {
+      "text": "Coating armor with Fire Dragon blood grants the wearer immunity to fire and lava."
+    },
+    {
+      "text": "\n"
+    },
+    {
+      "text": "Grants permanent Fire Resistance while the armor is worn."
+    },
+    {
+      "text": "\n"
+    }
+  ],
+  "effects": [
+    "Fire Resistance while worn",
+    "Cannot stack with multiple pieces",
+    "Single piece per set"
+  ],
+  "demoTool": [
+    "tconstruct:helmet",
+    "tconstruct:chestplate",
+    "tconstruct:leggings",
+    "tconstruct:boots"
+  ]
+}

@@ -1,0 +1,77 @@
+package com.github.Redux.iceandfire.item;
+
+import com.github.Redux.iceandfire.IceAndFire;
+import com.github.Redux.iceandfire.client.StatCollector;
+import net.minecraft.client.util.ITooltipFlag;
+import net.minecraft.creativetab.CreativeTabs;
+import net.minecraft.item.Item;
+import net.minecraft.item.ItemStack;
+import net.minecraft.util.NonNullList;
+import net.minecraft.world.World;
+import net.minecraftforge.fml.relauncher.Side;
+import net.minecraftforge.fml.relauncher.SideOnly;
+
+import javax.annotation.Nullable;
+import java.util.List;
+/** Ítem Dragon Armor */
+
+
+public class ItemDragonArmor extends Item implements ICustomRendered{
+
+	public DragonArmorType type;
+	public String name;
+
+	public ItemDragonArmor(DragonArmorType type, String name) {
+		this.type = type;
+		this.name = name;
+		this.setHasSubtypes(true);
+		this.setTranslationKey("iceandfire." + name);
+		this.setCreativeTab(IceAndFire.TAB_ITEMS);
+		this.maxStackSize = 1;
+		this.setRegistryName(IceAndFire.MODID, name);
+
+	}
+
+	@Override
+	@SideOnly(Side.CLIENT)
+	public void getSubItems(CreativeTabs tab, NonNullList<ItemStack> items) {
+		if (this.isInCreativeTab(tab)) {
+			items.add(new ItemStack(this, 1, 0));
+			items.add(new ItemStack(this, 1, 1));
+			items.add(new ItemStack(this, 1, 2));
+			items.add(new ItemStack(this, 1, 3));
+		}
+	}
+
+	@Override
+	@SideOnly(Side.CLIENT)
+	public void addInformation(ItemStack stack, @Nullable World worldIn, List<String> tooltip, ITooltipFlag flagIn) {
+		String words;
+		switch (stack.getMetadata()) {
+			default:
+				words = "dragon.armor_head";
+				break;
+			case 1:
+				words = "dragon.armor_neck";
+				break;
+			case 2:
+				words = "dragon.armor_body";
+				break;
+			case 3:
+				words = "dragon.armor_tail";
+				break;
+		}
+		tooltip.add(StatCollector.translateToLocal(words));
+	}
+
+	public enum DragonArmorType {
+		IRON,
+		GOLD,
+		DIAMOND,
+		SILVER,
+		COPPER,
+		FIRE_DRAGONSTEEL,
+		ICE_DRAGONSTEEL,
+		LIGHTNING_DRAGONSTEEL
+	}
+}

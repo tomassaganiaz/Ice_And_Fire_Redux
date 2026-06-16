@@ -1,0 +1,45 @@
+package com.github.Redux.iceandfire.client.render.entity.layer;
+
+import com.github.Redux.iceandfire.entity.EntitySeaSerpent;
+import net.minecraft.client.renderer.GlStateManager;
+import net.minecraft.client.renderer.entity.RenderLiving;
+import net.minecraft.client.renderer.entity.layers.LayerRenderer;
+import net.minecraft.util.ResourceLocation;
+import net.minecraftforge.fml.relauncher.Side;
+import net.minecraftforge.fml.relauncher.SideOnly;
+
+/** LayerSeaSerpentAncient — Layer Sea Serpent Ancient */
+
+@SideOnly(Side.CLIENT)
+public class LayerSeaSerpentAncient implements LayerRenderer<EntitySeaSerpent> {
+
+	private static final ResourceLocation TEXTURE = new ResourceLocation("iceandfire:textures/models/seaserpent/ancient_overlay.png");
+	private static final ResourceLocation TEXTURE_BLINK = new ResourceLocation("iceandfire:textures/models/seaserpent/ancient_overlay_blink.png");
+	private final RenderLiving<EntitySeaSerpent> renderer;
+
+	public LayerSeaSerpentAncient(RenderLiving<EntitySeaSerpent> renderer) {
+		this.renderer = renderer;
+	}
+
+	@Override
+	public void doRenderLayer(EntitySeaSerpent serpent, float f, float f1, float i, float f2, float f3, float f4, float f5) {
+		if (serpent.isAncient()) {
+			GlStateManager.enableNormalize();
+			GlStateManager.enableBlend();
+			GlStateManager.blendFunc(GlStateManager.SourceFactor.SRC_ALPHA, GlStateManager.DestFactor.ONE_MINUS_SRC_ALPHA);
+			if(serpent.isBlinking()){
+				this.renderer.bindTexture(TEXTURE_BLINK);
+			}else{
+				this.renderer.bindTexture(TEXTURE);
+			}
+			this.renderer.getMainModel().render(serpent, f, f1, f2, f3, f4, f5);
+			GlStateManager.disableBlend();
+			GlStateManager.disableNormalize();
+		}
+	}
+
+	@Override
+	public boolean shouldCombineTextures() {
+		return true;
+	}
+}
