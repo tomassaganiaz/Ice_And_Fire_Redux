@@ -66,19 +66,19 @@ dependencies {
 
     implementation fg.deobf("curse.maven:llibrary-${llibrary_version}")
     compileOnly fg.deobf("curse.maven:thaumcraft-${thaumcraft_version}")
-    implementation fg.deobf("curse.maven:hwyla-${hwyla_version}")
+    compileOnly fg.deobf("curse.maven:hwyla-${hwyla_version}")
     implementation fg.deobf("curse.maven:jei-${jei_version}")
     compileOnly fg.deobf("curse.maven:rlcombat-${rlcombat_version}")
-    implementation fg.deobf("curse.maven:lycanites-mobs-${lycanitesmobs_version}")
-    implementation fg.deobf("curse.maven:baubles-${baubles_version}")
-    implementation fg.deobf("curse.maven:claimit-api-${claimit_version}")
-    implementation fg.deobf("curse.maven:varied-commodities-${varied_commodities_version}")
-    implementation fg.deobf("curse.maven:the-one-probe-${the_one_probe_version}")
-    implementation fg.deobf("curse.maven:first-aid-${first_aid_version}")
+    compileOnly fg.deobf("curse.maven:lycanites-mobs-${lycanitesmobs_version}")
+    compileOnly fg.deobf("curse.maven:baubles-${baubles_version}")
+    compileOnly fg.deobf("curse.maven:claimit-api-${claimit_version}")
+    compileOnly fg.deobf("curse.maven:varied-commodities-${varied_commodities_version}")
+    compileOnly fg.deobf("curse.maven:the-one-probe-${the_one_probe_version}")
+    compileOnly fg.deobf("curse.maven:first-aid-${first_aid_version}")
 
-    implementation fg.deobf("CraftTweaker2:CraftTweaker2-${crafttweaker_version}")
-    implementation fg.deobf("CraftTweaker2:ZenScript:${zs_version}")
-    implementation fg.deobf("CraftTweaker2:CraftTweaker2-API:${zs_version}")
+    compileOnly fg.deobf("CraftTweaker2:CraftTweaker2-${crafttweaker_version}")
+    compileOnly fg.deobf("CraftTweaker2:ZenScript:${zs_version}")
+    compileOnly fg.deobf("CraftTweaker2:CraftTweaker2-API:${zs_version}")
 }
 
 mixin {

@@ -82,6 +82,7 @@ public interface IHitEffect {
 			if (target instanceof EntityDragonBase && ((EntityDragonBase)target).isWeakToLightning()) {
 				target.attackEntityFrom(DamageSource.LIGHTNING_BOLT, 3.0F + getMaterial().getAttackDamage() + 8F);
 			}
+			ChainLightningUtils.createChainLightningFromTarget(target.world, target, attacker);
 			target.knockBack(target, 1.5F, attacker.posX - target.posX, attacker.posZ - target.posZ);
 		}
 		if (this == IafItemRegistry.myrmex_desert_sword_venom || this == IafItemRegistry.myrmex_jungle_sword_venom) {
@@ -154,6 +155,7 @@ public interface IHitEffect {
 			if (target instanceof EntityDragonBase && ((EntityDragonBase)target).isWeakToLightning()) {
 				mod += 8F;
 			}
+			ChainLightningUtils.createChainLightningFromTarget(target.world, target, attacker);
 			target.knockBack(target, 1.5F, attacker.posX - target.posX, attacker.posZ - target.posZ);
 		}
 		if (this == IafItemRegistry.myrmex_desert_sword_venom || this == IafItemRegistry.myrmex_jungle_sword_venom) {
