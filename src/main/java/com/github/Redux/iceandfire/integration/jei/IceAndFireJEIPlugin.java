@@ -44,10 +44,10 @@ public class IceAndFireJEIPlugin implements IModPlugin {
         registry.addRecipeCatalyst(new ItemStack(IafBlockRegistry.dragonforge_core_lightning), LIGHTNING_DRAGON_FORGE_ID);
         registry.addRecipeCatalyst(new ItemStack(IafBlockRegistry.dragonforge_core), LIGHTNING_DRAGON_FORGE_ID);
 
-        addDescription(registry, new ItemStack(IafItemRegistry.fire_dragon_blood));
-        addDescription(registry, new ItemStack(IafItemRegistry.ice_dragon_blood));
-        addDescription(registry, new ItemStack(IafItemRegistry.lightning_dragon_blood));
-        addDescription(registry, new ItemStack(IafItemRegistry.dragon_skull));
+		addDescription(registry, new ItemStack(IafItemRegistry.fire_dragon_blood));
+		addDescription(registry, new ItemStack(IafItemRegistry.ice_dragon_blood));
+		addDescription(registry, new ItemStack(IafItemRegistry.lightning_dragon_blood));
+		addDescription(registry, new ItemStack(IafItemRegistry.dragon_skull));
         addDescription(registry, new ItemStack(IafItemRegistry.dragon_skull, 1, 1));
         addDescription(registry, new ItemStack(IafItemRegistry.dragon_skull, 1, 2));
         addDescription(registry, new ItemStack(IafItemRegistry.fire_stew));

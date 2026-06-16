@@ -715,9 +715,9 @@ iceandfire.fire_dragon_forge=Fire Dragon Forge
 iceandfire.ice_dragon_forge=Ice Dragon Forge
 iceandfire.lightning_dragon_forge=Lightning Dragon Forge
 
-item.iceandfire.fire_dragon_blood.jei_desc=Obtained by interacting with a dragon corpse while holding an empty bottle.
-item.iceandfire.ice_dragon_blood.jei_desc=Obtained by interacting with a dragon corpse while holding an empty bottle.
-item.iceandfire.lightning_dragon_blood.jei_desc=Obtained by interacting with a dragon corpse while holding an empty bottle.
+item.iceandfire.fire_dragon_blood.name.jei_desc=Obtained by interacting with a dragon corpse while holding an empty bottle.
+item.iceandfire.ice_dragon_blood.name.jei_desc=Obtained by interacting with a dragon corpse while holding an empty bottle.
+item.iceandfire.lightning_dragon_blood.name.jei_desc=Obtained by interacting with a dragon corpse while holding an empty bottle.
 item.iceandfire.dragonegg.jei_desc=Place in an open flame if a fire dragon, underwater if ice dragon, or in rain if lightning dragon and wait a long time. The dragon will bond with the closest player.
 item.iceandfire.dragon_skull.jei_desc=Can be placed on the ground or on walls as a trophy.
 item.iceandfire.hippogryph_skull.jei_desc=Can be placed on the ground or on walls as a trophy.
@@ -1055,3 +1055,8 @@ item.iceandfire.dragon_blood_bathe.ice=Ice
 item.iceandfire.dragon_blood_bathe.lightning=Lightning
 item.iceandfire.dragon_blood_bathe.tooltip=%s Bathed
 item.iceandfire.dragon_blood_bathe.uses=%s Uses Remaining
+
+# JEI Descriptions
+item.iceandfire.fire_dragon_blood.name.jei_desc=Right-click an empty Cauldron with Fire Dragon Blood to fill it. Then right-click the blood-filled cauldron with any weapon, tool, or armor piece to imbue it with dragon blood. The item gains 100 uses of the fire effect (sets enemies on fire for 5s, +50% damage vs Ice Dragons). Armor grants Fire Resistance while worn.
+item.iceandfire.ice_dragon_blood.name.jei_desc=Right-click an empty Cauldron with Ice Dragon Blood to fill it. Then right-click the blood-filled cauldron with any weapon, tool, or armor piece to imbue it with dragon blood. The item gains 100 uses of the ice effect (Slowness III for 5s, +50% damage vs Fire Dragons). Armor clears Slowness effects while worn.
+item.iceandfire.lightning_dragon_blood.name.jei_desc=Right-click an empty Cauldron with Lightning Dragon Blood to fill it. Then right-click the blood-filled cauldron with any weapon, tool, or armor piece to imbue it with dragon blood. The item gains 100 uses of the lightning effect (33% chance to strike chain lightning that bounces between nearby mobs, +50% damage vs Fire and Ice Dragons). Armor reduces lightning damage by 75% while worn.
