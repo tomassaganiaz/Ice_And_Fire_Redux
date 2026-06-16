@@ -2,6 +2,7 @@ package com.github.Redux.iceandfire.event;
 
 import com.github.Redux.iceandfire.IceAndFire;
 import com.github.Redux.iceandfire.IceAndFireConfig;
+import com.github.Redux.iceandfire.CommonProxy;
 import com.github.Redux.iceandfire.api.IEntityEffectCapability;
 import com.github.Redux.iceandfire.api.InFCapabilities;
 import com.github.Redux.iceandfire.core.ModPotions;
@@ -301,6 +302,16 @@ public class DragonEntityHandler {
 	public void onLivingHurt(LivingHurtEvent event) {
 		DamageSource source = event.getSource();
 		EntityLivingBase victim = event.getEntityLiving();
+
+		// Dragon Slayer enchantment — bonus damage vs dragons
+		if (victim instanceof EntityDragonBase && source.getImmediateSource() instanceof EntityLivingBase) {
+			EntityLivingBase attacker = (EntityLivingBase) source.getImmediateSource();
+			ItemStack weapon = attacker.getHeldItemMainhand();
+			int slayerLevel = EnchantmentHelper.getEnchantmentLevel(CommonProxy.DRAGON_SLAYER, weapon);
+			if (slayerLevel > 0) {
+				event.setAmount(event.getAmount() * (1.0F + 0.05F + slayerLevel * 0.10F));
+			}
+		}
 
 		if (source.isProjectile()) {
 			float multi = 1;

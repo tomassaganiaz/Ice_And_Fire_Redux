@@ -3,6 +3,7 @@ package com.github.Redux.iceandfire;
 import com.github.Redux.iceandfire.block.*;
 import com.github.Redux.iceandfire.client.particle.lightning.ParticleLightningVector;
 import com.github.Redux.iceandfire.core.*;
+import com.github.Redux.iceandfire.enchantment.EnchantmentDragonSlayer;
 import com.github.Redux.iceandfire.entity.*;
 import com.github.Redux.iceandfire.entity.projectile.*;
 import com.github.Redux.iceandfire.enums.*;
@@ -256,6 +257,7 @@ public class CommonProxy {
         registerEnumItems(event);
         IafRecipeRegistry.preInit();
         IafDragonForgeRecipeRegistry.preInit();
+        registerEnchantments();
         SpartanWeaponryCompat.init();
         TConstructCompat.init();
     }
@@ -364,5 +366,11 @@ public class CommonProxy {
     }
 
     public void openMyrmexAddRoomGui(ItemStack staff, BlockPos pos, EnumFacing facing) {
+    }
+
+    public static final net.minecraft.enchantment.Enchantment DRAGON_SLAYER = new EnchantmentDragonSlayer();
+
+    private static void registerEnchantments() {
+        // Enchantment auto-registers via constructor — static init is enough
     }
 }

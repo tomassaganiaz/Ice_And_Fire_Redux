@@ -1062,3 +1062,5 @@ item.iceandfire.ice_dragon_blood.name.jei_desc=Right-click an empty Cauldron wit
 item.iceandfire.lightning_dragon_blood.name.jei_desc=Right-click an empty Cauldron with Lightning Dragon Blood to fill it. Then right-click the blood-filled cauldron with any weapon, tool, or armor piece to imbue it with dragon blood. The item gains 100 uses of the lightning effect (33% chance to strike chain lightning that bounces between nearby mobs, +50% damage vs Fire and Ice Dragons). Armor reduces lightning damage by 75% while worn.
 
 entity.iceandfire.witherdragon.name=Wither Dragon
+
+enchantment.iceandfire.dragon_slayer=Dragon Slayer

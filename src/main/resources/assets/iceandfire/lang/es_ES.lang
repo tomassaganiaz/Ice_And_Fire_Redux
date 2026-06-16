@@ -1000,3 +1000,5 @@ item.iceandfire.ice_dragon_blood.name.jei_desc=Click derecho en un caldero vacío
 item.iceandfire.lightning_dragon_blood.name.jei_desc=Click derecho en un caldero vacío con Sangre de Dragón de Rayo para llenarlo. Luego click derecho en el caldero con cualquier arma, herramienta o armadura para imbuirla con sangre de dragón. El ítem obtiene 100 usos del efecto de rayo (33% de lanzar chain lightning que rebota entre mobs cercanos, +50% daño vs Dragones de Fuego y Hielo). La armadura reduce el daño de rayo en 75% al llevarla puesta.
 
 entity.iceandfire.witherdragon.name=Dragón de Wither
+
+enchantment.iceandfire.dragon_slayer=Asesino de Dragones
