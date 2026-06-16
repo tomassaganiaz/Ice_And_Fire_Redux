@@ -396,48 +396,48 @@ item.iceandfire.dragonbone_bow_lightning.name=Shocked Dragon Bone Bow
 
 item.iceandfire.dragon_collar.name=Dragon Collar
 
-item.iceandfire.fire_dragonsteel_ingot.name=Fire Dragonsteel Ingot
-item.iceandfire.ice_dragonsteel_ingot.name=Ice Dragonsteel Ingot
-item.iceandfire.lightning_dragonsteel_ingot.name=Lightning Dragonsteel Ingot
+item.iceandfire.dragonsteel_fire_ingot.name=Fire Dragonsteel Ingot
+item.iceandfire.dragonsteel_ice_ingot.name=Ice Dragonsteel Ingot
+item.iceandfire.dragonsteel_lightning_ingot.name=Lightning Dragonsteel Ingot
 
-item.iceandfire.fire_dragonsteel_sword.name=Fire Dragonsteel Sword
-item.iceandfire.fire_dragonsteel_pickaxe.name=Fire Dragonsteel Pickaxe
-item.iceandfire.fire_dragonsteel_axe.name=Fire Dragonsteel Axe
-item.iceandfire.fire_dragonsteel_shovel.name=Fire Dragonsteel Shovel
-item.iceandfire.fire_dragonsteel_hoe.name=Fire Dragonsteel Hoe
+item.iceandfire.dragonsteel_fire_sword.name=Fire Dragonsteel Sword
+item.iceandfire.dragonsteel_fire_pickaxe.name=Fire Dragonsteel Pickaxe
+item.iceandfire.dragonsteel_fire_axe.name=Fire Dragonsteel Axe
+item.iceandfire.dragonsteel_fire_shovel.name=Fire Dragonsteel Shovel
+item.iceandfire.dragonsteel_fire_hoe.name=Fire Dragonsteel Hoe
 
-item.iceandfire.ice_dragonsteel_sword.name=Ice Dragonsteel Sword
-item.iceandfire.ice_dragonsteel_pickaxe.name=Ice Dragonsteel Pickaxe
-item.iceandfire.ice_dragonsteel_axe.name=Ice Dragonsteel Axe
-item.iceandfire.ice_dragonsteel_shovel.name=Ice Dragonsteel Shovel
-item.iceandfire.ice_dragonsteel_hoe.name=Ice Dragonsteel Hoe
+item.iceandfire.dragonsteel_ice_sword.name=Ice Dragonsteel Sword
+item.iceandfire.dragonsteel_ice_pickaxe.name=Ice Dragonsteel Pickaxe
+item.iceandfire.dragonsteel_ice_axe.name=Ice Dragonsteel Axe
+item.iceandfire.dragonsteel_ice_shovel.name=Ice Dragonsteel Shovel
+item.iceandfire.dragonsteel_ice_hoe.name=Ice Dragonsteel Hoe
 
-item.iceandfire.lightning_dragonsteel_sword.name=Lightning Dragonsteel Sword
-item.iceandfire.lightning_dragonsteel_pickaxe.name=Lightning Dragonsteel Pickaxe
-item.iceandfire.lightning_dragonsteel_axe.name=Lightning Dragonsteel Axe
-item.iceandfire.lightning_dragonsteel_shovel.name=Lightning Dragonsteel Shovel
-item.iceandfire.lightning_dragonsteel_hoe.name=Lightning Dragonsteel Hoe
+item.iceandfire.dragonsteel_lightning_sword.name=Lightning Dragonsteel Sword
+item.iceandfire.dragonsteel_lightning_pickaxe.name=Lightning Dragonsteel Pickaxe
+item.iceandfire.dragonsteel_lightning_axe.name=Lightning Dragonsteel Axe
+item.iceandfire.dragonsteel_lightning_shovel.name=Lightning Dragonsteel Shovel
+item.iceandfire.dragonsteel_lightning_hoe.name=Lightning Dragonsteel Hoe
 
-item.iceandfire.dragonarmor_fire_dragonsteel.name=Fire Dragonsteel Dragon Armor
-item.iceandfire.dragonarmor_ice_dragonsteel.name=Ice Dragonsteel Dragon Armor
-item.iceandfire.dragonarmor_lightning_dragonsteel.name=Lightning Dragonsteel Dragon Armor
+item.iceandfire.dragonarmor_dragonsteel_fire.name=Fire Dragonsteel Dragon Armor
+item.iceandfire.dragonarmor_dragonsteel_ice.name=Ice Dragonsteel Dragon Armor
+item.iceandfire.dragonarmor_dragonsteel_lightning.name=Lightning Dragonsteel Dragon Armor
 
-tile.iceandfire.fire_dragonsteel_block.name=Fire Dragonsteel Block
-tile.iceandfire.ice_dragonsteel_block.name=Ice Dragonsteel Block
-tile.iceandfire.lightning_dragonsteel_block.name=Lightning Dragonsteel Block
+tile.iceandfire.dragonsteel_fire_block.name=Fire Dragonsteel Block
+tile.iceandfire.dragonsteel_ice_block.name=Ice Dragonsteel Block
+tile.iceandfire.dragonsteel_lightning_block.name=Lightning Dragonsteel Block
 
-item.iceandfire.fire_dragonsteel_helmet.name=Fire Dragonsteel Helmet
-item.iceandfire.fire_dragonsteel_chestplate.name=Fire Dragonsteel Chestplate
-item.iceandfire.fire_dragonsteel_leggings.name=Fire Dragonsteel Leggings
-item.iceandfire.fire_dragonsteel_boots.name=Fire Dragonsteel Boots
-item.iceandfire.ice_dragonsteel_helmet.name=Ice Dragonsteel Helmet
-item.iceandfire.ice_dragonsteel_chestplate.name=Ice Dragonsteel Chestplate
-item.iceandfire.ice_dragonsteel_leggings.name=Ice Dragonsteel Leggings
-item.iceandfire.ice_dragonsteel_boots.name=Ice Dragonsteel Boots
-item.iceandfire.lightning_dragonsteel_helmet.name=Lightning Dragonsteel Helmet
-item.iceandfire.lightning_dragonsteel_chestplate.name=Lightning Dragonsteel Chestplate
-item.iceandfire.lightning_dragonsteel_leggings.name=Lightning Dragonsteel Leggings
-item.iceandfire.lightning_dragonsteel_boots.name=Lightning Dragonsteel Boots
+item.iceandfire.dragonsteel_fire_helmet.name=Fire Dragonsteel Helmet
+item.iceandfire.dragonsteel_fire_chestplate.name=Fire Dragonsteel Chestplate
+item.iceandfire.dragonsteel_fire_leggings.name=Fire Dragonsteel Leggings
+item.iceandfire.dragonsteel_fire_boots.name=Fire Dragonsteel Boots
+item.iceandfire.dragonsteel_ice_helmet.name=Ice Dragonsteel Helmet
+item.iceandfire.dragonsteel_ice_chestplate.name=Ice Dragonsteel Chestplate
+item.iceandfire.dragonsteel_ice_leggings.name=Ice Dragonsteel Leggings
+item.iceandfire.dragonsteel_ice_boots.name=Ice Dragonsteel Boots
+item.iceandfire.dragonsteel_lightning_helmet.name=Lightning Dragonsteel Helmet
+item.iceandfire.dragonsteel_lightning_chestplate.name=Lightning Dragonsteel Chestplate
+item.iceandfire.dragonsteel_lightning_leggings.name=Lightning Dragonsteel Leggings
+item.iceandfire.dragonsteel_lightning_boots.name=Lightning Dragonsteel Boots
 
 item.banner.firedragon.white=White Fire Dragon
 item.banner.firedragon.orange=Orange Fire Dragon
