@@ -9,7 +9,7 @@ Fork/re-imagining of the original Ice and Fire mod for Minecraft 1.12.2, adding 
 ## Tabla de Contenido
 
 - [Modificaciones Implementadas](#modificaciones-implementadas)
-  - [Dragon Blood Bathing](#dragon-blood-bathing)
+- [Dragon Blood Bathing](#dragon-blood-bathing)
 - [Problemas Conocidos](#problemas-conocidos)
 - [Compilación](#compilación)
 
