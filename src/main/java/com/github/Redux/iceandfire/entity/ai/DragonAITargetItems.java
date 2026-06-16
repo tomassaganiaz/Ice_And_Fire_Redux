@@ -30,12 +30,12 @@ public class DragonAITargetItems<T extends EntityItem> extends EntityAITarget {
 
 	public DragonAITargetItems(EntityCreature creature, boolean checkSight, boolean onlyNearby) {
 		this(creature, 20, checkSight, onlyNearby, (Predicate<? super EntityItem>) null);
-		isIce = creature instanceof EntityDragonBase && ((EntityDragonBase) creature).dragonType.isPiscivore();
+		isIce = creature instanceof EntityDragonBase && ((EntityDragonBase) creature).dragonType != null && ((EntityDragonBase) creature).dragonType.isPiscivore();
 	}
 
 	public DragonAITargetItems(EntityCreature creature, int chance, boolean checkSight, boolean onlyNearby, @Nullable final Predicate<? super T> targetSelector) {
 		super(creature, checkSight, onlyNearby);
-		isIce = creature instanceof EntityDragonBase && ((EntityDragonBase) creature).dragonType.isPiscivore();
+		isIce = creature instanceof EntityDragonBase && ((EntityDragonBase) creature).dragonType != null && ((EntityDragonBase) creature).dragonType.isPiscivore();
 		this.targetChance = chance;
 		this.theNearestAttackableTargetSorter = new DragonAITargetItems.Sorter(creature);
 		this.setMutexBits(1);
