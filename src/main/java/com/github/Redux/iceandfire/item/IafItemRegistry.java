@@ -8,6 +8,7 @@ import net.minecraft.inventory.EntityEquipmentSlot;
 import net.minecraft.item.Item;
 import net.minecraft.item.Item.ToolMaterial;
 import net.minecraft.item.ItemArmor.ArmorMaterial;
+import net.minecraft.item.ItemFood;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.NonNullList;
 import net.minecraftforge.common.util.EnumHelper;
@@ -111,11 +112,11 @@ public class IafItemRegistry {
 	@GameRegistry.ObjectHolder(IceAndFire.MODID + ":silver_hoe")
 	public static Item silver_hoe = new ItemModHoe(silverTools, "silver_hoe", "iceandfire.silver_hoe");
 	@GameRegistry.ObjectHolder(IceAndFire.MODID + ":fire_stew")
-	public static Item fire_stew = new ItemGeneric("fire_stew", "iceandfire.fire_stew");
+	public static Item fire_stew = new ItemFood(10, 1.0F, false).setAlwaysEdible().setTranslationKey("iceandfire.fire_stew").setRegistryName(IceAndFire.MODID, "fire_stew").setCreativeTab(IceAndFire.TAB_ITEMS);
 	@GameRegistry.ObjectHolder(IceAndFire.MODID + ":frost_stew")
-	public static Item frost_stew = new ItemGeneric("frost_stew", "iceandfire.frost_stew");
+	public static Item frost_stew = new ItemFood(10, 1.0F, false).setAlwaysEdible().setTranslationKey("iceandfire.frost_stew").setRegistryName(IceAndFire.MODID, "frost_stew").setCreativeTab(IceAndFire.TAB_ITEMS);
 	@GameRegistry.ObjectHolder(IceAndFire.MODID + ":lightning_stew")
-	public static Item lightning_stew = new ItemGeneric("lightning_stew", "iceandfire.lightning_stew");
+	public static Item lightning_stew = new ItemFood(10, 1.0F, false).setAlwaysEdible().setTranslationKey("iceandfire.lightning_stew").setRegistryName(IceAndFire.MODID, "lightning_stew").setCreativeTab(IceAndFire.TAB_ITEMS);
 	@GameRegistry.ObjectHolder(IceAndFire.MODID + ":dragonbone")
 	public static Item dragonbone = new ItemDragonBone();
 	@GameRegistry.ObjectHolder(IceAndFire.MODID + ":witherbone")
