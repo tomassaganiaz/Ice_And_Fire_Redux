@@ -4,11 +4,12 @@ import com.github.Redux.iceandfire.IceAndFire;
 import com.github.Redux.iceandfire.entity.projectile.EntityDragonArrow;
 import com.github.Redux.iceandfire.enums.*;
 import net.minecraft.init.SoundEvents;
+import net.minecraft.init.MobEffects;
+import net.minecraft.potion.PotionEffect;
 import net.minecraft.inventory.EntityEquipmentSlot;
 import net.minecraft.item.Item;
 import net.minecraft.item.Item.ToolMaterial;
 import net.minecraft.item.ItemArmor.ArmorMaterial;
-import net.minecraft.item.ItemFood;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.NonNullList;
 import net.minecraftforge.common.util.EnumHelper;
@@ -112,11 +113,11 @@ public class IafItemRegistry {
 	@GameRegistry.ObjectHolder(IceAndFire.MODID + ":silver_hoe")
 	public static Item silver_hoe = new ItemModHoe(silverTools, "silver_hoe", "iceandfire.silver_hoe");
 	@GameRegistry.ObjectHolder(IceAndFire.MODID + ":fire_stew")
-	public static Item fire_stew = new ItemFood(10, 1.0F, false).setAlwaysEdible().setTranslationKey("iceandfire.fire_stew").setRegistryName(IceAndFire.MODID, "fire_stew").setCreativeTab(IceAndFire.TAB_ITEMS);
+	public static Item fire_stew = new ItemDragonStew(10, 1.0F, "fire_stew", new PotionEffect(MobEffects.FIRE_RESISTANCE, 6000, 0));
 	@GameRegistry.ObjectHolder(IceAndFire.MODID + ":frost_stew")
-	public static Item frost_stew = new ItemFood(10, 1.0F, false).setAlwaysEdible().setTranslationKey("iceandfire.frost_stew").setRegistryName(IceAndFire.MODID, "frost_stew").setCreativeTab(IceAndFire.TAB_ITEMS);
+	public static Item frost_stew = new ItemDragonStew(10, 1.0F, "frost_stew", new PotionEffect(MobEffects.WATER_BREATHING, 6000, 0), new PotionEffect(MobEffects.RESISTANCE, 6000, 0));
 	@GameRegistry.ObjectHolder(IceAndFire.MODID + ":lightning_stew")
-	public static Item lightning_stew = new ItemFood(10, 1.0F, false).setAlwaysEdible().setTranslationKey("iceandfire.lightning_stew").setRegistryName(IceAndFire.MODID, "lightning_stew").setCreativeTab(IceAndFire.TAB_ITEMS);
+	public static Item lightning_stew = new ItemDragonStew(10, 1.0F, "lightning_stew", new PotionEffect(MobEffects.SPEED, 6000, 1));
 	@GameRegistry.ObjectHolder(IceAndFire.MODID + ":dragonbone")
 	public static Item dragonbone = new ItemDragonBone();
 	@GameRegistry.ObjectHolder(IceAndFire.MODID + ":witherbone")
