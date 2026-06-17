@@ -113,11 +113,11 @@ public class IafItemRegistry {
 	@GameRegistry.ObjectHolder(IceAndFire.MODID + ":silver_hoe")
 	public static Item silver_hoe = new ItemModHoe(silverTools, "silver_hoe", "iceandfire.silver_hoe");
 	@GameRegistry.ObjectHolder(IceAndFire.MODID + ":fire_stew")
-	public static Item fire_stew = new ItemDragonStew(10, 1.0F, "fire_stew", new PotionEffect(MobEffects.FIRE_RESISTANCE, 6000, 0));
+	public static Item fire_stew = new ItemDragonStew(10, 1.0F, "fire_stew", new PotionEffect(MobEffects.FIRE_RESISTANCE, 3000, 0));
 	@GameRegistry.ObjectHolder(IceAndFire.MODID + ":frost_stew")
-	public static Item frost_stew = new ItemDragonStew(10, 1.0F, "frost_stew", new PotionEffect(MobEffects.WATER_BREATHING, 6000, 0), new PotionEffect(MobEffects.RESISTANCE, 6000, 0));
+	public static Item frost_stew = new ItemDragonStew(10, 1.0F, "frost_stew", new PotionEffect(MobEffects.WATER_BREATHING, 3000, 0), new PotionEffect(MobEffects.RESISTANCE, 3000, 0));
 	@GameRegistry.ObjectHolder(IceAndFire.MODID + ":lightning_stew")
-	public static Item lightning_stew = new ItemDragonStew(10, 1.0F, "lightning_stew", new PotionEffect(MobEffects.SPEED, 6000, 1));
+	public static Item lightning_stew = new ItemDragonStew(10, 1.0F, "lightning_stew", new PotionEffect(MobEffects.SPEED, 3000, 1));
 	@GameRegistry.ObjectHolder(IceAndFire.MODID + ":dragonbone")
 	public static Item dragonbone = new ItemDragonBone();
 	@GameRegistry.ObjectHolder(IceAndFire.MODID + ":witherbone")
