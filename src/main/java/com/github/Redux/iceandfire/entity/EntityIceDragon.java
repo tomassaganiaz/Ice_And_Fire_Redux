@@ -50,7 +50,7 @@ public class EntityIceDragon extends EntityDragonBase {
 	public static final ResourceLocation SKELETON_LOOT = LootTableList.register(new ResourceLocation("iceandfire", "dragon/ice_dragon_skeleton"));
 
 	public EntityIceDragon(World worldIn) {
-		super(worldIn, EnumDragonType.ICE, 1, 1 + IceAndFireConfig.DRAGON_SETTINGS.dragonAttackDamage, IceAndFireConfig.DRAGON_SETTINGS.dragonHealth * 0.04, IceAndFireConfig.DRAGON_SETTINGS.dragonHealth, 0.15F, 0.4F);
+		super(worldIn, EnumDragonType.ICE, 1, 1 + IceAndFireConfig.DRAGON_SETTINGS.dragonAttackDamage, IceAndFireConfig.DRAGON_SETTINGS.dragonHealth * 0.046, IceAndFireConfig.DRAGON_SETTINGS.dragonHealth * 1.15, 0.15F, 0.4F);
 		this.setSize(0.78F, 1.2F);
 		this.ignoreFrustumCheck = true;
 		this.growth_stages = new float[][]{growth_stage_1, growth_stage_2, growth_stage_3, growth_stage_4, growth_stage_5};

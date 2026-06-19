@@ -38,7 +38,7 @@ public class EntityFireDragon extends EntityDragonBase {
     public static final ResourceLocation SKELETON_LOOT = LootTableList.register(new ResourceLocation("iceandfire", "dragon/fire_dragon_skeleton"));
 
     public EntityFireDragon(World worldIn) {
-        super(worldIn, EnumDragonType.FIRE, 1, 1 + IceAndFireConfig.DRAGON_SETTINGS.dragonAttackDamage, IceAndFireConfig.DRAGON_SETTINGS.dragonHealth * 0.04, IceAndFireConfig.DRAGON_SETTINGS.dragonHealth, 0.15F, 0.4F);
+        super(worldIn, EnumDragonType.FIRE, 1, 1 + IceAndFireConfig.DRAGON_SETTINGS.dragonAttackDamage, IceAndFireConfig.DRAGON_SETTINGS.dragonHealth * 0.046, IceAndFireConfig.DRAGON_SETTINGS.dragonHealth * 1.15, 0.15F, 0.4F);
         this.setSize(0.78F, 1.2F);
         this.setPathPriority(PathNodeType.DANGER_FIRE, 0.0F);
         this.setPathPriority(PathNodeType.DAMAGE_FIRE, 0.0F);

@@ -21,7 +21,7 @@ public class EntityWitherDragon extends EntityDragonBase {
     public static final float[] growth_stage_5 = new float[]{20F, 30F};
 
     public EntityWitherDragon(World worldIn) {
-        super(worldIn, EnumDragonType.WITHER, 1, 1 + IceAndFireConfig.DRAGON_SETTINGS.dragonAttackDamage, IceAndFireConfig.DRAGON_SETTINGS.dragonHealth * 0.04, IceAndFireConfig.DRAGON_SETTINGS.dragonHealth, 0.15F, 0.4F);
+        super(worldIn, EnumDragonType.WITHER, 1, 1 + IceAndFireConfig.DRAGON_SETTINGS.dragonAttackDamage, IceAndFireConfig.DRAGON_SETTINGS.dragonHealth * 0.046, IceAndFireConfig.DRAGON_SETTINGS.dragonHealth * 1.15, 0.15F, 0.4F);
         this.setSize(0.78F, 1.2F);
         this.isImmuneToFire = true;
         this.ignoreFrustumCheck = true;

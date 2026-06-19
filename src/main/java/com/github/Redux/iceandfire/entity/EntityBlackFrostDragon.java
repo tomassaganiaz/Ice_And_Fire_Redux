@@ -32,7 +32,7 @@ public class EntityBlackFrostDragon extends EntityIceDragon implements IDreadMob
 
 	public EntityBlackFrostDragon(World worldIn) {
 		super(worldIn);
-		this.maximumArmor = 70D;
+		this.maximumArmor = 77D;
 	}
 
 	@Override

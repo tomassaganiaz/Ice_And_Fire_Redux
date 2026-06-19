@@ -208,7 +208,7 @@ public abstract class EntityDragonBase extends EntityTameable implements IMultip
         this.minimumSpeed = minimumSpeed;
         this.maximumSpeed = maximumSpeed;
         this.minimumArmor = 1D;
-        this.maximumArmor = 20D;
+        this.maximumArmor = 22D;
         ANIMATION_EAT = Animation.create(20);
         ANIMATION_SPEAK = Animation.create(20);
         ANIMATION_BITE = Animation.create(35);
