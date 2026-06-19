@@ -13,8 +13,66 @@
 | 3 | **Dragonforges Wither** — recetas de forja para wither | Bloquea hasta que #1 avance |
 | 4 | **Bestiario** — entradas Wither Dragon + Dread mobs | No iniciado |
 | 5 | **Tinker's dragonsteel lightning** — `textures/tinkers/dragonsteel_lightning.png` | Huérfano, sin referenciar |
+| 6 | **Balance configs** — ~150 valores hardcodeados | Ver sección abajo |
 
 > ✅ Completado: loot tiers, modelos forja, cuevas cíclope, nidos con muros, rebranding
+
+---
+
+## ⚖️ Valores hardcodeados pendientes de config
+
+Valores más impactantes que deberían ser configurables:
+
+### Dragones
+| Valor | Archivo | Default actual |
+|---|---|---|
+| Health min multiplier | `Entity*Dragon.java` | `dragonHealth * 0.046` |
+| Health max multiplier | `Entity*Dragon.java` | `dragonHealth * 1.15` |
+| Min/max speed | `Entity*Dragon.java` | `0.15F / 0.4F` |
+| Min/max armor | `EntityDragonBase.java` | `1D / 22D` |
+| Age scaling divisor | `EntityDragonBase.java` | `125` |
+| Explosion size multiplier | `EntityDragonBase.java` | `stage * 2.5F` |
+| Breath timing (ticks) | `EntityDragonBase.java` | `40` |
+| Dragon stage age thresholds | `EntityDragonBase.java` | `25, 50, 75, 100` |
+| Flight chance per tick | `EntityDragonBase.java` | `1500` |
+| Fly speed base | `EntityDragonBase.java` | `2 + age/125 * 2` |
+
+### Entidades
+| Valor | Archivo | Default actual |
+|---|---|---|
+| Cyclops armor | `EntityCyclops.java` | `20D` |
+| Cyclops walk speed | `EntityCyclops.java` | `0.35D` |
+| Hydra head regrow ticks | `EntityHydra.java` | `100` |
+| Hydra breath duration | `EntityHydra.java` | `60` |
+| Hydra strike range | `EntityHydra.java` | `6` |
+| Siren charm radius | `EntitySiren.java` | `50x12` |
+| Siren melee damage | `EntitySiren.java` | `6D` |
+| Troll armor | `EntityTroll.java` | `9D` |
+| Myrmex stats (Queen+Worker) | `EntityMyrmex*.java` | todos hardcodeados |
+| Sea Serpent ancient modifier | `EntitySeaSerpent.java` | `1.5x` |
+
+### WorldGen
+| Valor | Archivo | Default actual |
+|---|---|---|
+| Roost dragon age range | `WorldGenDragonRoost.java` | `25-99` |
+| Roost radius formula | `WorldGenDragonRoost.java` | `age / 4` |
+| Cyclops cave radius | `WorldGenCyclopsCave.java` | `16` |
+| Dragon cave underground Y | `StructureGenerator.java` | `20-40` |
+| Cyclops cave feature chances | `WorldGenCyclopsCave.java` | varios |
+| Dragon cave ore distribution | `WorldGenDragonCave.java` | varios |
+
+### Items
+| Valor | Archivo | Default actual |
+|---|---|---|
+| Bow durability (base/elemental) | `ItemDragonBow.java` | `584 / 700` |
+| Tide Trident melee base | `ItemTideTrident.java` | `7D` |
+| Cyclops eye range + durability | `ItemCyclopsEye.java` | `15 / 500` |
+
+### Dragon Forge
+| Valor | Archivo | Default actual |
+|---|---|---|
+| Fallback cook time | `TileEntityDragonforge.java` | `1000` |
+| Flame timer | `TileEntityDragonforge.java` | `40` |
 
 ---
 
