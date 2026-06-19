@@ -20,12 +20,13 @@ import java.util.Random;
 
 public abstract class WorldGenDragonRoost extends WorldGenerator {
     private static boolean isMale;
+    private int dragonAge;
 
     @Override
     public boolean generate(World worldIn, Random rand, BlockPos position) {
         isMale = rand.nextBoolean();
 
-        int dragonAge = 25 + rand.nextInt(75);
+        dragonAge = 25 + rand.nextInt(75);
         int radius = Math.max(6, dragonAge / 4);
         int wallHeight = 2 + (dragonAge / 15);
         transformGround(worldIn, rand, position, radius);
@@ -114,7 +115,7 @@ public abstract class WorldGenDragonRoost extends WorldGenerator {
             if (world.getBlockState(position).getBlock() instanceof BlockChest) {
                 TileEntity chest = world.getTileEntity(position);
                 if (chest instanceof TileEntityChest && !(chest).isInvalid()) {
-                    ((TileEntityChest) chest).setLootTable(getLootTable(), rand.nextLong());
+                    ((TileEntityChest) chest).setLootTable(getLootTable(dragonAge, isMale), rand.nextLong());
                 }
             }
         } else {
@@ -173,6 +174,6 @@ public abstract class WorldGenDragonRoost extends WorldGenerator {
     protected abstract IBlockState getPileBlock();
     protected abstract IBlockState getBuildingBlock();
     protected abstract Block[] getDragonTransformedBlocks();
-    protected abstract ResourceLocation getLootTable();
+    protected abstract ResourceLocation getLootTable(int dragonAge, boolean male);
     protected abstract EntityDragonBase createDragon(World worldIn);
 }

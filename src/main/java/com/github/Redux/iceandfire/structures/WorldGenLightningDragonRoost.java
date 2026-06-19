@@ -11,10 +11,14 @@ import net.minecraft.init.Blocks;
 import net.minecraft.util.ResourceLocation;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
+import net.minecraft.world.storage.loot.LootTableList;
 /** WorldGenLightningDragonRoost — World Gen Lightning Dragon Roost */
 
 
 public class WorldGenLightningDragonRoost extends WorldGenDragonRoost {
+
+    public static final ResourceLocation LIGHTNING_TIER1 = LootTableList.register(new ResourceLocation("iceandfire", "lightning_dragon_cave_t1"));
+    public static final ResourceLocation LIGHTNING_TIER3 = LootTableList.register(new ResourceLocation("iceandfire", "lightning_dragon_cave_t3"));
 
     protected void transformState(World world, BlockPos blockpos, IBlockState state) {
         if (state.getMaterial() == Material.GRASS && state.getBlock() == Blocks.GRASS) {
@@ -61,8 +65,10 @@ public class WorldGenLightningDragonRoost extends WorldGenDragonRoost {
         };
     }
 
-    protected ResourceLocation getLootTable() {
-        return WorldGenLightningDragonCave.LIGHTNINGDRAGON_CHEST;
+    protected ResourceLocation getLootTable(int dragonAge, boolean male) {
+        if (dragonAge < 50) return LIGHTNING_TIER1;
+        if (dragonAge >= 80) return LIGHTNING_TIER3;
+        return male ? WorldGenLightningDragonCave.LIGHTNINGDRAGON_MALE_CHEST : WorldGenLightningDragonCave.LIGHTNINGDRAGON_CHEST;
     }
 
     protected EntityDragonBase createDragon(World worldIn) {

@@ -11,10 +11,14 @@ import net.minecraft.init.Blocks;
 import net.minecraft.util.ResourceLocation;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
+import net.minecraft.world.storage.loot.LootTableList;
 /** WorldGenFireDragonRoost — World Gen Fire Dragon Roost */
 
 
 public class WorldGenFireDragonRoost extends WorldGenDragonRoost {
+
+    public static final ResourceLocation FIRE_TIER1 = LootTableList.register(new ResourceLocation("iceandfire", "fire_dragon_cave_t1"));
+    public static final ResourceLocation FIRE_TIER3 = LootTableList.register(new ResourceLocation("iceandfire", "fire_dragon_cave_t3"));
 
     protected void transformState(World world, BlockPos blockpos, IBlockState state) {
         if (state.getBlock() instanceof BlockContainer) {
@@ -59,8 +63,10 @@ public class WorldGenFireDragonRoost extends WorldGenDragonRoost {
         };
     }
 
-    protected ResourceLocation getLootTable() {
-        return WorldGenFireDragonCave.FIREDRAGON_CHEST;
+    protected ResourceLocation getLootTable(int dragonAge, boolean male) {
+        if (dragonAge < 50) return FIRE_TIER1;
+        if (dragonAge >= 80) return FIRE_TIER3;
+        return male ? WorldGenFireDragonCave.FIREDRAGON_MALE_CHEST : WorldGenFireDragonCave.FIREDRAGON_CHEST;
     }
 
     protected EntityDragonBase createDragon(World worldIn) {
