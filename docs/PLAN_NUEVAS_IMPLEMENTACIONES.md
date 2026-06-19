@@ -4,6 +4,20 @@
 
 ---
 
+## ⏳ Implementaciones pendientes (próximas)
+
+| # | Tarea | Estado |
+|---|-------|--------|
+| 1 | **Wither Dragon** — texturas, IA, armas, dragonforge | Base creada, falta contenido |
+| 2 | **Dragón de Veneno** — nuevo tipo completo | No iniciado |
+| 3 | **Dragonforges Wither** — recetas de forja para wither | Bloquea hasta que #1 avance |
+| 4 | **Bestiario** — entradas Wither Dragon + Dread mobs | No iniciado |
+| 5 | **Tinker's dragonsteel lightning** — `textures/tinkers/dragonsteel_lightning.png` | Huérfano, sin referenciar |
+
+> ✅ Completado: loot tiers, modelos forja, cuevas cíclope, nidos con muros, rebranding
+
+---
+
 ## 🆕 Dragones Nuevos
 
 ### Dragón de Veneno (Jungla/Pantano)
