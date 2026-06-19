@@ -20,33 +20,33 @@ public class IafDragonForgeRecipeRegistry {
     public static List<DragonForgeRecipe> LIGHTNING_FORGE_RECIPES = new ArrayList<>();
 
 	public static void preInit() {
-		FIRE_FORGE_RECIPES.add(new DragonForgeRecipe(new ItemStack(IafItemRegistry.dragonbone_sword), new ItemStack(IafItemRegistry.fire_dragon_blood), new ItemStack(IafItemRegistry.dragonbone_sword_fire), true));
-		FIRE_FORGE_RECIPES.add(new DragonForgeRecipe(new ItemStack(IafItemRegistry.dragonbone_bow), new ItemStack(IafItemRegistry.fire_dragon_blood), new ItemStack(IafItemRegistry.dragonbone_bow_fire), true));
-		ICE_FORGE_RECIPES.add(new DragonForgeRecipe(new ItemStack(IafItemRegistry.dragonbone_sword), new ItemStack(IafItemRegistry.ice_dragon_blood), new ItemStack(IafItemRegistry.dragonbone_sword_ice), true));
-		ICE_FORGE_RECIPES.add(new DragonForgeRecipe(new ItemStack(IafItemRegistry.dragonbone_bow), new ItemStack(IafItemRegistry.ice_dragon_blood), new ItemStack(IafItemRegistry.dragonbone_bow_ice), true));
-		LIGHTNING_FORGE_RECIPES.add(new DragonForgeRecipe(new ItemStack(IafItemRegistry.dragonbone_sword), new ItemStack(IafItemRegistry.lightning_dragon_blood), new ItemStack(IafItemRegistry.dragonbone_sword_lightning), true));
-		LIGHTNING_FORGE_RECIPES.add(new DragonForgeRecipe(new ItemStack(IafItemRegistry.dragonbone_bow), new ItemStack(IafItemRegistry.lightning_dragon_blood), new ItemStack(IafItemRegistry.dragonbone_bow_lightning), true));
+		FIRE_FORGE_RECIPES.add(new DragonForgeRecipe(new ItemStack(IafItemRegistry.dragonbone_sword), new ItemStack(IafItemRegistry.fire_dragon_blood, 2), new ItemStack(IafItemRegistry.dragonbone_sword_fire), true, false, 2000));
+		FIRE_FORGE_RECIPES.add(new DragonForgeRecipe(new ItemStack(IafItemRegistry.dragonbone_bow), new ItemStack(IafItemRegistry.fire_dragon_blood, 2), new ItemStack(IafItemRegistry.dragonbone_bow_fire), true, false, 2000));
+		ICE_FORGE_RECIPES.add(new DragonForgeRecipe(new ItemStack(IafItemRegistry.dragonbone_sword), new ItemStack(IafItemRegistry.ice_dragon_blood, 2), new ItemStack(IafItemRegistry.dragonbone_sword_ice), true, false, 2000));
+		ICE_FORGE_RECIPES.add(new DragonForgeRecipe(new ItemStack(IafItemRegistry.dragonbone_bow), new ItemStack(IafItemRegistry.ice_dragon_blood, 2), new ItemStack(IafItemRegistry.dragonbone_bow_ice), true, false, 2000));
+		LIGHTNING_FORGE_RECIPES.add(new DragonForgeRecipe(new ItemStack(IafItemRegistry.dragonbone_sword), new ItemStack(IafItemRegistry.lightning_dragon_blood, 2), new ItemStack(IafItemRegistry.dragonbone_sword_lightning), true, false, 2000));
+		LIGHTNING_FORGE_RECIPES.add(new DragonForgeRecipe(new ItemStack(IafItemRegistry.dragonbone_bow), new ItemStack(IafItemRegistry.lightning_dragon_blood, 2), new ItemStack(IafItemRegistry.dragonbone_bow_lightning), true, false, 2000));
 
-		FIRE_FORGE_RECIPES.add(new DragonForgeRecipe(new ItemStack(IafItemRegistry.dragonbone), new ItemStack(IafItemRegistry.fire_dragon_blood), new ItemStack(IafItemRegistry.dragonsteel_fire_ingot)));
-		FIRE_FORGE_RECIPES.add(new DragonForgeRecipe(new ItemStack(IafItemRegistry.dragonsteel_fire_ingot, 3), new ItemStack(IafItemRegistry.fire_dragon_blood), new ItemStack(IafItemRegistry.dragonsteel_fire_sword)));
-		FIRE_FORGE_RECIPES.add(new DragonForgeRecipe(new ItemStack(IafItemRegistry.dragonsteel_fire_ingot, 3), new ItemStack(IafItemRegistry.fire_dragon_blood), new ItemStack(IafItemRegistry.dragonsteel_fire_pickaxe)));
-		FIRE_FORGE_RECIPES.add(new DragonForgeRecipe(new ItemStack(IafItemRegistry.dragonsteel_fire_ingot, 3), new ItemStack(IafItemRegistry.fire_dragon_blood), new ItemStack(IafItemRegistry.dragonsteel_fire_axe)));
-		FIRE_FORGE_RECIPES.add(new DragonForgeRecipe(new ItemStack(IafItemRegistry.dragonsteel_fire_ingot, 2), new ItemStack(IafItemRegistry.fire_dragon_blood), new ItemStack(IafItemRegistry.dragonsteel_fire_shovel)));
-		FIRE_FORGE_RECIPES.add(new DragonForgeRecipe(new ItemStack(IafItemRegistry.dragonsteel_fire_ingot, 2), new ItemStack(IafItemRegistry.fire_dragon_blood), new ItemStack(IafItemRegistry.dragonsteel_fire_hoe)));
+		FIRE_FORGE_RECIPES.add(new DragonForgeRecipe(new ItemStack(IafItemRegistry.dragonbone), new ItemStack(IafItemRegistry.fire_dragon_blood, 1), new ItemStack(IafItemRegistry.dragonsteel_fire_ingot), false, false, 1200));
+		FIRE_FORGE_RECIPES.add(new DragonForgeRecipe(new ItemStack(IafItemRegistry.dragonsteel_fire_ingot, 3), new ItemStack(IafItemRegistry.fire_dragon_blood, 2), new ItemStack(IafItemRegistry.dragonsteel_fire_sword), false, false, 1500));
+		FIRE_FORGE_RECIPES.add(new DragonForgeRecipe(new ItemStack(IafItemRegistry.dragonsteel_fire_ingot, 3), new ItemStack(IafItemRegistry.fire_dragon_blood, 2), new ItemStack(IafItemRegistry.dragonsteel_fire_pickaxe), false, false, 1500));
+		FIRE_FORGE_RECIPES.add(new DragonForgeRecipe(new ItemStack(IafItemRegistry.dragonsteel_fire_ingot, 3), new ItemStack(IafItemRegistry.fire_dragon_blood, 2), new ItemStack(IafItemRegistry.dragonsteel_fire_axe), false, false, 1500));
+		FIRE_FORGE_RECIPES.add(new DragonForgeRecipe(new ItemStack(IafItemRegistry.dragonsteel_fire_ingot, 2), new ItemStack(IafItemRegistry.fire_dragon_blood, 1), new ItemStack(IafItemRegistry.dragonsteel_fire_shovel), false, false, 1200));
+		FIRE_FORGE_RECIPES.add(new DragonForgeRecipe(new ItemStack(IafItemRegistry.dragonsteel_fire_ingot, 2), new ItemStack(IafItemRegistry.fire_dragon_blood, 1), new ItemStack(IafItemRegistry.dragonsteel_fire_hoe), false, false, 1200));
 
-		ICE_FORGE_RECIPES.add(new DragonForgeRecipe(new ItemStack(IafItemRegistry.dragonbone), new ItemStack(IafItemRegistry.ice_dragon_blood), new ItemStack(IafItemRegistry.dragonsteel_ice_ingot)));
-		ICE_FORGE_RECIPES.add(new DragonForgeRecipe(new ItemStack(IafItemRegistry.dragonsteel_ice_ingot, 3), new ItemStack(IafItemRegistry.ice_dragon_blood), new ItemStack(IafItemRegistry.dragonsteel_ice_sword)));
-		ICE_FORGE_RECIPES.add(new DragonForgeRecipe(new ItemStack(IafItemRegistry.dragonsteel_ice_ingot, 3), new ItemStack(IafItemRegistry.ice_dragon_blood), new ItemStack(IafItemRegistry.dragonsteel_ice_pickaxe)));
-		ICE_FORGE_RECIPES.add(new DragonForgeRecipe(new ItemStack(IafItemRegistry.dragonsteel_ice_ingot, 3), new ItemStack(IafItemRegistry.ice_dragon_blood), new ItemStack(IafItemRegistry.dragonsteel_ice_axe)));
-		ICE_FORGE_RECIPES.add(new DragonForgeRecipe(new ItemStack(IafItemRegistry.dragonsteel_ice_ingot, 2), new ItemStack(IafItemRegistry.ice_dragon_blood), new ItemStack(IafItemRegistry.dragonsteel_ice_shovel)));
-		ICE_FORGE_RECIPES.add(new DragonForgeRecipe(new ItemStack(IafItemRegistry.dragonsteel_ice_ingot, 2), new ItemStack(IafItemRegistry.ice_dragon_blood), new ItemStack(IafItemRegistry.dragonsteel_ice_hoe)));
+		ICE_FORGE_RECIPES.add(new DragonForgeRecipe(new ItemStack(IafItemRegistry.dragonbone), new ItemStack(IafItemRegistry.ice_dragon_blood, 1), new ItemStack(IafItemRegistry.dragonsteel_ice_ingot), false, false, 1200));
+		ICE_FORGE_RECIPES.add(new DragonForgeRecipe(new ItemStack(IafItemRegistry.dragonsteel_ice_ingot, 3), new ItemStack(IafItemRegistry.ice_dragon_blood, 2), new ItemStack(IafItemRegistry.dragonsteel_ice_sword), false, false, 1500));
+		ICE_FORGE_RECIPES.add(new DragonForgeRecipe(new ItemStack(IafItemRegistry.dragonsteel_ice_ingot, 3), new ItemStack(IafItemRegistry.ice_dragon_blood, 2), new ItemStack(IafItemRegistry.dragonsteel_ice_pickaxe), false, false, 1500));
+		ICE_FORGE_RECIPES.add(new DragonForgeRecipe(new ItemStack(IafItemRegistry.dragonsteel_ice_ingot, 3), new ItemStack(IafItemRegistry.ice_dragon_blood, 2), new ItemStack(IafItemRegistry.dragonsteel_ice_axe), false, false, 1500));
+		ICE_FORGE_RECIPES.add(new DragonForgeRecipe(new ItemStack(IafItemRegistry.dragonsteel_ice_ingot, 2), new ItemStack(IafItemRegistry.ice_dragon_blood, 1), new ItemStack(IafItemRegistry.dragonsteel_ice_shovel), false, false, 1200));
+		ICE_FORGE_RECIPES.add(new DragonForgeRecipe(new ItemStack(IafItemRegistry.dragonsteel_ice_ingot, 2), new ItemStack(IafItemRegistry.ice_dragon_blood, 1), new ItemStack(IafItemRegistry.dragonsteel_ice_hoe), false, false, 1200));
 
-		LIGHTNING_FORGE_RECIPES.add(new DragonForgeRecipe(new ItemStack(IafItemRegistry.dragonbone), new ItemStack(IafItemRegistry.lightning_dragon_blood), new ItemStack(IafItemRegistry.dragonsteel_lightning_ingot)));
-		LIGHTNING_FORGE_RECIPES.add(new DragonForgeRecipe(new ItemStack(IafItemRegistry.dragonsteel_lightning_ingot, 3), new ItemStack(IafItemRegistry.lightning_dragon_blood), new ItemStack(IafItemRegistry.dragonsteel_lightning_sword)));
-		LIGHTNING_FORGE_RECIPES.add(new DragonForgeRecipe(new ItemStack(IafItemRegistry.dragonsteel_lightning_ingot, 3), new ItemStack(IafItemRegistry.lightning_dragon_blood), new ItemStack(IafItemRegistry.dragonsteel_lightning_pickaxe)));
-		LIGHTNING_FORGE_RECIPES.add(new DragonForgeRecipe(new ItemStack(IafItemRegistry.dragonsteel_lightning_ingot, 3), new ItemStack(IafItemRegistry.lightning_dragon_blood), new ItemStack(IafItemRegistry.dragonsteel_lightning_axe)));
-		LIGHTNING_FORGE_RECIPES.add(new DragonForgeRecipe(new ItemStack(IafItemRegistry.dragonsteel_lightning_ingot, 2), new ItemStack(IafItemRegistry.lightning_dragon_blood), new ItemStack(IafItemRegistry.dragonsteel_lightning_shovel)));
-		LIGHTNING_FORGE_RECIPES.add(new DragonForgeRecipe(new ItemStack(IafItemRegistry.dragonsteel_lightning_ingot, 2), new ItemStack(IafItemRegistry.lightning_dragon_blood), new ItemStack(IafItemRegistry.dragonsteel_lightning_hoe)));
+		LIGHTNING_FORGE_RECIPES.add(new DragonForgeRecipe(new ItemStack(IafItemRegistry.dragonbone), new ItemStack(IafItemRegistry.lightning_dragon_blood, 1), new ItemStack(IafItemRegistry.dragonsteel_lightning_ingot), false, false, 1200));
+		LIGHTNING_FORGE_RECIPES.add(new DragonForgeRecipe(new ItemStack(IafItemRegistry.dragonsteel_lightning_ingot, 3), new ItemStack(IafItemRegistry.lightning_dragon_blood, 2), new ItemStack(IafItemRegistry.dragonsteel_lightning_sword), false, false, 1500));
+		LIGHTNING_FORGE_RECIPES.add(new DragonForgeRecipe(new ItemStack(IafItemRegistry.dragonsteel_lightning_ingot, 3), new ItemStack(IafItemRegistry.lightning_dragon_blood, 2), new ItemStack(IafItemRegistry.dragonsteel_lightning_pickaxe), false, false, 1500));
+		LIGHTNING_FORGE_RECIPES.add(new DragonForgeRecipe(new ItemStack(IafItemRegistry.dragonsteel_lightning_ingot, 3), new ItemStack(IafItemRegistry.lightning_dragon_blood, 2), new ItemStack(IafItemRegistry.dragonsteel_lightning_axe), false, false, 1500));
+		LIGHTNING_FORGE_RECIPES.add(new DragonForgeRecipe(new ItemStack(IafItemRegistry.dragonsteel_lightning_ingot, 2), new ItemStack(IafItemRegistry.lightning_dragon_blood, 1), new ItemStack(IafItemRegistry.dragonsteel_lightning_shovel), false, false, 1200));
+		LIGHTNING_FORGE_RECIPES.add(new DragonForgeRecipe(new ItemStack(IafItemRegistry.dragonsteel_lightning_ingot, 2), new ItemStack(IafItemRegistry.lightning_dragon_blood, 1), new ItemStack(IafItemRegistry.dragonsteel_lightning_hoe), false, false, 1200));
 
         for (EnumDragonArmor input : EnumDragonArmor.values()) {
             List<DragonForgeRecipe> recipes;
@@ -67,10 +67,10 @@ public class IafDragonForgeRecipeRegistry {
 
             EnumBloodedDragonArmor result = EnumBloodedDragonArmor.valueOf(input.name());
 
-            recipes.add(new DragonForgeRecipe(new ItemStack(input.helmet), new ItemStack(blood), new ItemStack(result.helmet), true));
-            recipes.add(new DragonForgeRecipe(new ItemStack(input.chestplate), new ItemStack(blood), new ItemStack(result.chestplate), true));
-            recipes.add(new DragonForgeRecipe(new ItemStack(input.leggings), new ItemStack(blood), new ItemStack(result.leggings), true));
-            recipes.add(new DragonForgeRecipe(new ItemStack(input.boots), new ItemStack(blood), new ItemStack(result.boots), true));
+            recipes.add(new DragonForgeRecipe(new ItemStack(input.helmet), new ItemStack(blood, 2), new ItemStack(result.helmet), true, false, 2000));
+            recipes.add(new DragonForgeRecipe(new ItemStack(input.chestplate), new ItemStack(blood, 2), new ItemStack(result.chestplate), true, false, 2000));
+            recipes.add(new DragonForgeRecipe(new ItemStack(input.leggings), new ItemStack(blood, 2), new ItemStack(result.leggings), true, false, 2000));
+            recipes.add(new DragonForgeRecipe(new ItemStack(input.boots), new ItemStack(blood, 2), new ItemStack(result.boots), true, false, 2000));
         }
 
         for (EnumBloodedDragonArmor input : EnumBloodedDragonArmor.values()) {
@@ -103,10 +103,10 @@ public class IafDragonForgeRecipeRegistry {
                     outputBoots = IafItemRegistry.dragonsteel_fire_boots;
             }
 
-            recipes.add(new DragonForgeRecipe(new ItemStack(input.helmet), new ItemStack(blood), new ItemStack(outputHelmet), true));
-            recipes.add(new DragonForgeRecipe(new ItemStack(input.chestplate), new ItemStack(blood), new ItemStack(outputChestplate), true));
-            recipes.add(new DragonForgeRecipe(new ItemStack(input.leggings), new ItemStack(blood), new ItemStack(outputLeggings), true));
-            recipes.add(new DragonForgeRecipe(new ItemStack(input.boots), new ItemStack(blood), new ItemStack(outputBoots), true));
+            recipes.add(new DragonForgeRecipe(new ItemStack(input.helmet), new ItemStack(blood, 3), new ItemStack(outputHelmet), true, false, 3000));
+            recipes.add(new DragonForgeRecipe(new ItemStack(input.chestplate), new ItemStack(blood, 3), new ItemStack(outputChestplate), true, false, 3000));
+            recipes.add(new DragonForgeRecipe(new ItemStack(input.leggings), new ItemStack(blood, 3), new ItemStack(outputLeggings), true, false, 3000));
+            recipes.add(new DragonForgeRecipe(new ItemStack(input.boots), new ItemStack(blood, 3), new ItemStack(outputBoots), true, false, 3000));
         }
     }
 

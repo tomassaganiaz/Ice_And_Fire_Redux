@@ -1,6 +1,12 @@
 {
-  "parent": "block/cube_all",
-  "textures": {
-    "all": "iceandfire:blocks/dragonforge_core_lightning"
-  }
+    "parent": "block/cube",
+    "textures": {
+        "particle": "iceandfire:blocks/dragonforge_lightning_brick",
+        "down": "iceandfire:blocks/dread_stone_bricks",
+        "up": "iceandfire:blocks/dragonforge_lightning_brick",
+        "north": "iceandfire:blocks/dragonforge_lightning_core",
+        "east": "iceandfire:blocks/dragonforge_lightning_brick",
+        "south": "iceandfire:blocks/dragonforge_lightning_brick",
+        "west": "iceandfire:blocks/dragonforge_lightning_brick"
+    }
 }

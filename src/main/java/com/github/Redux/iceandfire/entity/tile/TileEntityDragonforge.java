@@ -189,6 +189,10 @@ public class TileEntityDragonforge extends TileEntity implements ITickable, ISid
     }
 
     public int getMaxCookTime() {
+        DragonForgeRecipe recipe = getRecipe(getType());
+        if (recipe != null) {
+            return recipe.getCookTime();
+        }
         return 1000;
     }
 

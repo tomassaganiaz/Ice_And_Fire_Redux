@@ -15,6 +15,7 @@ public class DragonForgeRecipe {
 
     protected boolean persistMetadata;
     protected boolean isProjectile;
+    protected int cookTime;
 
     public DragonForgeRecipe(ItemStack input, ItemStack blood, ItemStack output) {
         this(input, blood, output, false);
@@ -25,11 +26,16 @@ public class DragonForgeRecipe {
     }
 
     public DragonForgeRecipe(ItemStack input, ItemStack blood, ItemStack output, boolean persistMetadata, boolean isProjectile) {
+        this(input, blood, output, persistMetadata, isProjectile, 1000);
+    }
+
+    public DragonForgeRecipe(ItemStack input, ItemStack blood, ItemStack output, boolean persistMetadata, boolean isProjectile, int cookTime) {
         this.input = input;
         this.blood = blood;
         this.output = output;
         this.persistMetadata = persistMetadata;
         this.isProjectile = isProjectile;
+        this.cookTime = cookTime;
     }
 
     public ItemStack getInput() {
@@ -42,6 +48,10 @@ public class DragonForgeRecipe {
 
     public ItemStack getOutput() {
         return output;
+    }
+
+    public int getCookTime() {
+        return cookTime;
     }
 
     public boolean shouldPersistMetadata() {

@@ -25,10 +25,11 @@ public abstract class WorldGenDragonRoost extends WorldGenerator {
     public boolean generate(World worldIn, Random rand, BlockPos position) {
         isMale = rand.nextBoolean();
 
-        int dragonAge = 50 + rand.nextInt(25);
-        int radius = (int)(dragonAge / 5 * 1.5f);
+        int dragonAge = 25 + rand.nextInt(75);
+        int radius = Math.max(6, dragonAge / 4);
+        int wallHeight = 2 + (dragonAge / 15);
         transformGround(worldIn, rand, position, radius);
-        generateNestWalls(worldIn, rand, position, radius);
+        generateNestWalls(worldIn, rand, position, radius, wallHeight);
         generateStructures(worldIn, rand, position, radius);
         generateDragon(worldIn, rand, position, dragonAge);
         return true;
@@ -81,8 +82,7 @@ public abstract class WorldGenDragonRoost extends WorldGenerator {
         }
     }
 
-    private void generateNestWalls(World world, Random rand, BlockPos center, int radius) {
-        int nestWallHeight = 3 + rand.nextInt(3);
+    private void generateNestWalls(World world, Random rand, BlockPos center, int radius, int nestWallHeight) {
         IBlockState wallBlock = getBuildingBlock();
         int r = radius + 1;
 

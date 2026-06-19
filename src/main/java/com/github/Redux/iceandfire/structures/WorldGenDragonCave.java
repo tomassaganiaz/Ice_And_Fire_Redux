@@ -126,6 +126,8 @@ public abstract class WorldGenDragonCave extends WorldGenerator {
                 }
             }
         }
+        generateNestRim(worldIn, rand, position, i2, ySize);
+        generateDragonBones(worldIn, rand, position, i2, ySize);
         for (int i = 0; i2 >= 0 && i < 3; ++i) {
             int j = i2 + rand.nextInt(2);
             int k = (i2 + rand.nextInt(2)) / 2;
@@ -148,6 +150,67 @@ public abstract class WorldGenDragonCave extends WorldGenerator {
         dragon.setHunger(50);
         worldIn.spawnEntity(dragon);
         return true;
+    }
+
+    private void generateNestRim(World world, Random rand, BlockPos center, int innerRadius, int ySize) {
+        IBlockState rimBlock = getCobblestone();
+        int r = innerRadius + 1;
+        int wallHeight = 1 + rand.nextInt(2);
+        for (int x = -r; x <= r; x++) {
+            for (int z = -r; z <= r; z++) {
+                double distSq = x * x + z * z;
+                double outerSq = r * r;
+                double innerSq = (r - 2) * (r - 2);
+                if (distSq >= innerSq && distSq <= outerSq) {
+                    for (int y = center.getY(); y <= center.getY() + 1; y++) {
+                        BlockPos pos = new BlockPos(center.getX() + x, y, center.getZ() + z);
+                        if (world.getBlockState(pos).getMaterial() == Material.ROCK && rand.nextFloat() < 0.6f) {
+                            for (int h = 0; h <= wallHeight; h++) {
+                                BlockPos wallPos = pos.up(h);
+                                if (world.getBlockState(wallPos).getMaterial() != Material.ROCK) {
+                                    world.setBlockState(wallPos, rimBlock, 2);
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+        int platformRadius = innerRadius / 3;
+        for (int x = -platformRadius; x <= platformRadius; x++) {
+            for (int z = -platformRadius; z <= platformRadius; z++) {
+                if (x * x + z * z <= platformRadius * platformRadius) {
+                    BlockPos floorPos = new BlockPos(center.getX() + x, center.getY(), center.getZ() + z);
+                    if (world.getBlockState(floorPos.down()).getMaterial() == Material.ROCK) {
+                        world.setBlockState(floorPos, getStone(), 2);
+                    }
+                }
+            }
+        }
+    }
+
+    private void generateDragonBones(World world, Random rand, BlockPos center, int radius, int ySize) {
+        IBlockState boneBlock = Blocks.BONE_BLOCK.getDefaultState();
+        int count = 3 + rand.nextInt(8);
+        for (int i = 0; i < count; i++) {
+            int angle = rand.nextInt(360);
+            double rad = Math.toRadians(angle);
+            int boneRadius = radius - 1 - rand.nextInt(3);
+            int bx = center.getX() + (int)(boneRadius * Math.cos(rad));
+            int bz = center.getZ() + (int)(boneRadius * Math.sin(rad));
+            int by = center.getY() - rand.nextInt(radius / 2);
+            BlockPos bonePos = new BlockPos(bx, by, bz);
+            float hardness = world.getBlockState(bonePos).getBlock().getBlockHardness(world.getBlockState(bonePos), world, bonePos);
+            if (hardness >= 0 && hardness < 50 && world.getBlockState(bonePos).getMaterial() == Material.ROCK) {
+                world.setBlockState(bonePos, boneBlock, 2);
+                if (rand.nextBoolean()) {
+                    BlockPos up = bonePos.up();
+                    if (world.getBlockState(up).getMaterial() == Material.ROCK) {
+                        world.setBlockState(up, boneBlock, 2);
+                    }
+                }
+            }
+        }
     }
 
     protected abstract IBlockState getStone();
