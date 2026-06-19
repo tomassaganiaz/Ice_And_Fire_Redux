@@ -1,6 +1,6 @@
-## Translated by KameiB, MieR for RLCraft 2.9.4
-itemGroup.iceandfire_items=Ice And Fire: アイテム
-itemGroup.iceandfire_blocks=Ice And Fire: ブロック
+## Translated by KameiB, MieR
+itemGroup.iceandfire_items=Ice and Fire: Redux - アイテム
+itemGroup.iceandfire_blocks=Ice and Fire: Redux - ブロック
 iceandfire.empty =空
 
 tile.iceandfire.lectern.name=書見台

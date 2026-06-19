@@ -26,8 +26,10 @@ public abstract class WorldGenDragonRoost extends WorldGenerator {
         isMale = rand.nextBoolean();
 
         int dragonAge = 50 + rand.nextInt(25);
-        transformGround(worldIn, rand, position, dragonAge / 5);
-        generateStructures(worldIn, rand, position, dragonAge / 5);
+        int radius = (int)(dragonAge / 5 * 1.5f);
+        transformGround(worldIn, rand, position, radius);
+        generateNestWalls(worldIn, rand, position, radius);
+        generateStructures(worldIn, rand, position, radius);
         generateDragon(worldIn, rand, position, dragonAge);
         return true;
     }
@@ -73,6 +75,31 @@ public abstract class WorldGenDragonRoost extends WorldGenerator {
                                 break;
                         }
 
+                    }
+                }
+            }
+        }
+    }
+
+    private void generateNestWalls(World world, Random rand, BlockPos center, int radius) {
+        int nestWallHeight = 3 + rand.nextInt(3);
+        IBlockState wallBlock = getBuildingBlock();
+        int r = radius + 1;
+
+        for (int x = -r; x <= r; x++) {
+            for (int z = -r; z <= r; z++) {
+                double distSq = x * x + z * z;
+                double outerSq = r * r;
+                double innerSq = (r - 2) * (r - 2);
+
+                if (distSq >= innerSq && distSq <= outerSq) {
+                    BlockPos groundPos = world.getTopSolidOrLiquidBlock(new BlockPos(center.getX() + x, center.getY(), center.getZ() + z));
+                    IBlockState groundState = world.getBlockState(groundPos);
+
+                    if (isDragonTransformedBlock(groundState.getBlock()) && groundPos.getY() >= center.getY() - 3 && rand.nextFloat() < 0.7f) {
+                        for (int h = 1; h <= nestWallHeight; h++) {
+                            world.setBlockState(groundPos.up(h), wallBlock, 2);
+                        }
                     }
                 }
             }

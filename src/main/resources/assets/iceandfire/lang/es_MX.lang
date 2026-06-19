@@ -1,6 +1,6 @@
-## Translated by KameiB for RLCraft 2.10
-itemGroup.iceandfire_items=Ice And Fire: Objetos
-itemGroup.iceandfire_blocks=Ice And Fire: Bloques
+## Translated by KameiB
+itemGroup.iceandfire_items=Ice and Fire: Redux - Objetos
+itemGroup.iceandfire_blocks=Ice and Fire: Redux - Bloques
 iceandfire.empty=Vacio
 
 tile.iceandfire.lectern.name=Atril
@@ -996,3 +996,69 @@ achievement.jarPixie.desc=Mete un Hada en un Frasco.
 
 tc.aspect.mythus=Criatura mitologica, ser legendario, criptico, bicho temible
 tc.aspect.draco=Dragon
+
+entity.iceandfire.witherdragon.name=Dragón de Wither
+
+enchantment.iceandfire.dragon_slayer=Asesino de Dragones
+
+# Dragonsteel Armaduras de Dragón
+item.iceandfire.dragonarmor_dragonsteel_fire.name=Armadura de Dragón de Dragonsteel de Fuego
+item.iceandfire.dragonarmor_dragonsteel_ice.name=Armadura de Dragón de Dragonsteel de Hielo
+item.iceandfire.dragonarmor_dragonsteel_lightning.name=Armadura de Dragón de Dragonsteel de Rayo
+
+# Dragonsteel Fuego
+item.iceandfire.dragonsteel_fire_ingot.name=Lingote de Dragonsteel de Fuego
+item.iceandfire.dragonsteel_fire_sword.name=Espada de Dragonsteel de Fuego
+item.iceandfire.dragonsteel_fire_pickaxe.name=Pico de Dragonsteel de Fuego
+item.iceandfire.dragonsteel_fire_axe.name=Hacha de Dragonsteel de Fuego
+item.iceandfire.dragonsteel_fire_shovel.name=Pala de Dragonsteel de Fuego
+item.iceandfire.dragonsteel_fire_hoe.name=Azada de Dragonsteel de Fuego
+item.iceandfire.dragonsteel_fire_helmet.name=Casco de Dragonsteel de Fuego
+item.iceandfire.dragonsteel_fire_chestplate.name=Peto de Dragonsteel de Fuego
+item.iceandfire.dragonsteel_fire_leggings.name=Grebas de Dragonsteel de Fuego
+item.iceandfire.dragonsteel_fire_boots.name=Botas de Dragonsteel de Fuego
+
+# Dragonsteel Hielo
+item.iceandfire.dragonsteel_ice_ingot.name=Lingote de Dragonsteel de Hielo
+item.iceandfire.dragonsteel_ice_sword.name=Espada de Dragonsteel de Hielo
+item.iceandfire.dragonsteel_ice_pickaxe.name=Pico de Dragonsteel de Hielo
+item.iceandfire.dragonsteel_ice_axe.name=Hacha de Dragonsteel de Hielo
+item.iceandfire.dragonsteel_ice_shovel.name=Pala de Dragonsteel de Hielo
+item.iceandfire.dragonsteel_ice_hoe.name=Azada de Dragonsteel de Hielo
+item.iceandfire.dragonsteel_ice_helmet.name=Casco de Dragonsteel de Hielo
+item.iceandfire.dragonsteel_ice_chestplate.name=Peto de Dragonsteel de Hielo
+item.iceandfire.dragonsteel_ice_leggings.name=Grebas de Dragonsteel de Hielo
+item.iceandfire.dragonsteel_ice_boots.name=Botas de Dragonsteel de Hielo
+
+# Dragonsteel Rayo
+item.iceandfire.dragonsteel_lightning_ingot.name=Lingote de Dragonsteel de Rayo
+item.iceandfire.dragonsteel_lightning_sword.name=Espada de Dragonsteel de Rayo
+item.iceandfire.dragonsteel_lightning_pickaxe.name=Pico de Dragonsteel de Rayo
+item.iceandfire.dragonsteel_lightning_axe.name=Hacha de Dragonsteel de Rayo
+item.iceandfire.dragonsteel_lightning_shovel.name=Pala de Dragonsteel de Rayo
+item.iceandfire.dragonsteel_lightning_hoe.name=Azada de Dragonsteel de Rayo
+item.iceandfire.dragonsteel_lightning_helmet.name=Casco de Dragonsteel de Rayo
+item.iceandfire.dragonsteel_lightning_chestplate.name=Peto de Dragonsteel de Rayo
+item.iceandfire.dragonsteel_lightning_leggings.name=Grebas de Dragonsteel de Rayo
+item.iceandfire.dragonsteel_lightning_boots.name=Botas de Dragonsteel de Rayo
+
+# Armadura de Escamas Elementales
+item.iceandfire.dragonHelmet.flamed.name=Casco de Escamas Ardientes
+item.iceandfire.dragonHelmet.iced.name=Casco de Escamas Gélidas
+item.iceandfire.dragonHelmet.shocked.name=Casco de Escamas Electrizadas
+item.iceandfire.dragonChestplate.flamed.name=Peto de Escamas Ardientes
+item.iceandfire.dragonChestplate.iced.name=Peto de Escamas Gélidas
+item.iceandfire.dragonChestplate.shocked.name=Peto de Escamas Electrizadas
+item.iceandfire.dragonLeggings.flamed.name=Grebas de Escamas Ardientes
+item.iceandfire.dragonLeggings.iced.name=Grebas de Escamas Gélidas
+item.iceandfire.dragonLeggings.shocked.name=Grebas de Escamas Electrizadas
+item.iceandfire.dragonBoots.flamed.name=Botas de Escamas Ardientes
+item.iceandfire.dragonBoots.iced.name=Botas de Escamas Gélidas
+item.iceandfire.dragonBoots.shocked.name=Botas de Escamas Electrizadas
+
+# Baño de Sangre
+item.iceandfire.dragon_blood_bathe.fire=Fuego
+item.iceandfire.dragon_blood_bathe.ice=Hielo
+item.iceandfire.dragon_blood_bathe.lightning=Rayo
+item.iceandfire.dragon_blood_bathe.tooltip=Bañado en %s
+item.iceandfire.dragon_blood_bathe.usos=%s Usos Restantes

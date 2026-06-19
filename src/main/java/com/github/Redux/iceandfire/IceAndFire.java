@@ -62,7 +62,7 @@ public class IceAndFire {
     public static final String MODID = "iceandfire";
     public static final String VERSION = "2.2.8";
     public static final String LLIBRARY_VERSION = "1.7.9";
-    public static final String NAME = "Ice And Fire";
+    public static final String NAME = "Ice and Fire: Redux";
     public static final Logger logger = LogManager.getLogger(NAME);
     @Instance(value = MODID)
     public static IceAndFire INSTANCE;
