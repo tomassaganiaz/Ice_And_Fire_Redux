@@ -25,6 +25,8 @@ import com.github.Redux.iceandfire.message.*;
 import com.github.Redux.iceandfire.misc.CreativeTab;
 import com.github.Redux.iceandfire.world.village.ComponentAnimalFarm;
 import com.github.Redux.iceandfire.world.village.MapGenSnowVillage;
+import com.github.Redux.iceandfire.world.village.PixieVillagePieces;
+import com.github.Redux.iceandfire.world.village.SnowVillagePieces;
 import com.github.Redux.iceandfire.world.village.VillageAnimalFarmCreator;
 import net.ilexiconn.llibrary.server.network.NetworkWrapper;
 import net.minecraft.creativetab.CreativeTabs;
@@ -119,6 +121,8 @@ public class IceAndFire {
         logger.info("A daughter picks up a warrior's sword");
         MapGenStructureIO.registerStructure(MapGenSnowVillage.Start.class, "SnowVillageStart");
         MapGenStructureIO.registerStructureComponent(ComponentAnimalFarm.class, "AnimalFarm");
+        SnowVillagePieces.registerVillagePieces();
+        PixieVillagePieces.registerVillagePieces();
         VillagerRegistry.instance().registerVillageCreationHandler(new VillageAnimalFarmCreator());
         PROXY.render();
         GameRegistry.registerWorldGenerator(new StructureGenerator(), 0);

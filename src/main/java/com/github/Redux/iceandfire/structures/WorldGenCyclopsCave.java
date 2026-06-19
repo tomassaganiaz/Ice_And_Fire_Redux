@@ -18,8 +18,7 @@ import net.minecraft.world.gen.feature.WorldGenerator;
 import net.minecraft.world.storage.loot.LootTableList;
 
 import java.util.Random;
-/** WorldGenCyclopsCave — World Gen Cyclops Cave */
-
+/** WorldGenCyclopsCave — Cueva de cíclope con entrada, fogata, corrales y tesoro */
 
 public class WorldGenCyclopsCave extends WorldGenerator {
 
@@ -76,13 +75,20 @@ public class WorldGenCyclopsCave extends WorldGenerator {
                     }
                 }
             }
-            for (BlockPos blockpos : BlockPos.getAllInBox(position.add(-j, -k, -l), position.add(j, k, l))) {
-                if (blockpos.distanceSq(position) <= (double) (f * f) && blockpos.getY() == position.getY()) {
+        // Build entrance arch
+        generateEntranceArch(worldIn, rand, position);
+
+        // Build central fire pit
+        generateFirePit(worldIn, rand, position);
+
+        // Place features on the floor
+        for (BlockPos blockpos : BlockPos.getAllInBox(position.add(-j, -k, -l), position.add(j, k, l))) {
+            if (blockpos.distanceSq(position) <= (double) (f * f) && blockpos.getY() == position.getY()) {
                     if (rand.nextInt(130) == 0 && isTouchingAir(worldIn, blockpos.up())){
                         this.genSkeleton(worldIn, blockpos.up(), rand, position, f);
                     }
 
-                    if (rand.nextInt(130) == 0 && blockpos.distanceSq(position) <= (double) (f * f) * 0.8F && sheepPenCount < 2){
+                    if (rand.nextInt(130) == 0 && blockpos.distanceSq(position) <= (double) (f * f) * 0.8F && sheepPenCount < 3){
                         this.genSheepPen(worldIn, blockpos.up(), rand, position, f);
                         sheepPenCount++;
                     }
@@ -92,7 +98,7 @@ public class WorldGenCyclopsCave extends WorldGenerator {
                         worldIn.setBlockState(blockpos.up().south(), IafBlockRegistry.goldPile.getDefaultState().withProperty(BlockCoinPile.LAYERS, 1 + new Random().nextInt(7)), 2);
                         worldIn.setBlockState(blockpos.up().west(), IafBlockRegistry.goldPile.getDefaultState().withProperty(BlockCoinPile.LAYERS, 1 + new Random().nextInt(7)), 2);
                         worldIn.setBlockState(blockpos.up().east(), IafBlockRegistry.goldPile.getDefaultState().withProperty(BlockCoinPile.LAYERS, 1 + new Random().nextInt(7)), 2);
-                        worldIn.setBlockState(blockpos.up(2), Blocks.CHEST.getDefaultState().withProperty(BlockChest.FACING, EnumFacing.HORIZONTALS[new Random().nextInt(3)]), 2);
+                        worldIn.setBlockState(blockpos.up(2), Blocks.CHEST.getDefaultState().withProperty(BlockChest.FACING, EnumFacing.HORIZONTALS[new Random().nextInt(4)]), 2);
                         if (worldIn.getBlockState(blockpos.up(2)).getBlock() instanceof BlockChest) {
                             TileEntity tileentity1 = worldIn.getTileEntity(blockpos.up(2));
                             if (tileentity1 instanceof TileEntityChest && !((TileEntityChest) tileentity1).isInvalid()) {
@@ -199,6 +205,51 @@ public class WorldGenCyclopsCave extends WorldGenerator {
                 }
             }
 
+        }
+    }
+
+    private void generateEntranceArch(World world, Random rand, BlockPos center) {
+        int archWidth = 2 + rand.nextInt(2);
+        int archHeight = 3 + rand.nextInt(2);
+        BlockPos base = center.north(14);
+        for (int side = -archWidth; side <= archWidth; side++) {
+            for (int h = 0; h < archHeight; h++) {
+                BlockPos pillar = base.east(side).up(h);
+                if (world.getBlockState(pillar).getBlockHardness(world, pillar) >= 0) {
+                    world.setBlockState(pillar, Blocks.STONEBRICK.getDefaultState(), 2);
+                }
+            }
+        }
+        for (int top = -archWidth + 1; top < archWidth; top++) {
+            BlockPos archBlock = base.east(top).up(archHeight);
+            if (world.getBlockState(archBlock).getBlockHardness(world, archBlock) >= 0) {
+                world.setBlockState(archBlock, Blocks.STONEBRICK.getDefaultState(), 2);
+            }
+        }
+    }
+
+    private void generateFirePit(World world, Random rand, BlockPos center) {
+        BlockPos fireCenter = center.add(rand.nextInt(6) - 3, 0, rand.nextInt(6) - 3);
+        for (int x = -1; x <= 1; x++) {
+            for (int z = -1; z <= 1; z++) {
+                BlockPos pit = fireCenter.add(x, 0, z);
+                if (world.isAirBlock(pit)) {
+                    world.setBlockState(pit, Blocks.NETHERRACK.getDefaultState(), 2);
+                }
+            }
+        }
+        if (world.isAirBlock(fireCenter.up())) {
+            world.setBlockState(fireCenter.up(), Blocks.FIRE.getDefaultState(), 2);
+        }
+        for (int x = -2; x <= 2; x++) {
+            for (int z = -2; z <= 2; z++) {
+                if ((Math.abs(x) == 2 || Math.abs(z) == 2) && rand.nextFloat() < 0.4f) {
+                    BlockPos seat = fireCenter.add(x, 0, z);
+                    if (world.isAirBlock(seat) && !world.isAirBlock(seat.down())) {
+                        world.setBlockState(seat, Blocks.COBBLESTONE_WALL.getDefaultState(), 2);
+                    }
+                }
+            }
         }
     }
 }

@@ -33,8 +33,8 @@ import java.util.Random;
 public class PixieVillagePieces extends AbstractVillagePieces {
 
 	public static void registerVillagePieces() {
-		MapGenStructureIO.registerStructureComponent(PixieHouse.class, "ViBH");
-		MapGenStructureIO.registerStructureComponent(Well.class, "ViW");
+		MapGenStructureIO.registerStructureComponent(PixieHouse.class, "PiBH");
+		MapGenStructureIO.registerStructureComponent(Well.class, "PiW");
 	}
 
 	public static List<PixieVillagePieces.PieceWeight> getStructureVillageWeightedPieceList(Random random, int size) {

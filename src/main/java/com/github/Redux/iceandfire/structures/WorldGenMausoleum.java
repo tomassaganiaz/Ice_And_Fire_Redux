@@ -72,6 +72,7 @@ public class WorldGenMausoleum extends WorldGenerator {
         Template template = templateManager.getTemplate(worldIn.getMinecraftServer(), STRUCTURE);
         PlacementSettings settings = new PlacementSettings().setRotation(getRotationFromFacing(facing));
         BlockPos pos = height.offset(facing, template.getSize().getZ() / 2).offset(facing.rotateYCCW(), template.getSize().getX() / 2);
+        boolean genSuccess = false;
         if (checkIfCanGenAt(worldIn, pos, template.getSize().getX(), template.getSize().getZ(), facing)) {
             template.addBlocksToWorld(worldIn, pos, new MausoleumProcessor(), settings, 2);
             for (BlockPos underPos : BlockPos.getAllInBox(
@@ -80,8 +81,9 @@ public class WorldGenMausoleum extends WorldGenerator {
             )) {
                 worldIn.setBlockState(underPos, IafBlockRegistry.dread_stone_tile.getDefaultState(), 2);
             }
+            genSuccess = true;
         }
-        return true;
+        return genSuccess;
     }
 
     public boolean checkIfCanGenAt(World world, BlockPos middle, int x, int z, EnumFacing facing) {
