@@ -2,7 +2,7 @@ package com.github.Redux.iceandfire.block;
 
 import com.github.Redux.iceandfire.IceAndFire;
 import com.github.Redux.iceandfire.entity.tile.TileEntityDragonforge;
-import com.github.Redux.iceandfire.entity.tile.TileEntityDragonforgeInput;
+import com.github.Redux.iceandfire.entity.tile.TileEntityDragonforgeBrick;
 import com.github.Redux.iceandfire.enums.EnumDragonType;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockContainer;
@@ -22,21 +22,21 @@ import net.minecraft.world.World;
 
 import javax.annotation.Nullable;
 
-public class BlockDragonforgeInput extends BlockContainer implements IDragonProof {
+public class BlockDragonforgeBricks extends BlockContainer implements IDragonProof {
 
-    public static final PropertyBool ACTIVE = PropertyBool.create("active");
+    public static final PropertyBool GRILL = PropertyBool.create("grill");
     private final EnumDragonType dragonType;
 
-    public BlockDragonforgeInput(EnumDragonType dragonType) {
+    public BlockDragonforgeBricks(EnumDragonType dragonType) {
         super(Material.ROCK);
         this.dragonType = dragonType;
         this.setHardness(40F);
         this.setResistance(500F);
         this.setSoundType(SoundType.METAL);
-        this.setDefaultState(this.blockState.getBaseState().withProperty(ACTIVE, false));
+        this.setDefaultState(this.blockState.getBaseState().withProperty(GRILL, false));
         this.setCreativeTab(IceAndFire.TAB_BLOCKS);
-        this.setTranslationKey("iceandfire.dragonforge_" + dragonType.getName() + "_input");
-        this.setRegistryName(IceAndFire.MODID, "dragonforge_" + dragonType.getName() + "_input");
+        this.setTranslationKey("iceandfire.dragonforge_" + dragonType.getName() + "_brick");
+        this.setRegistryName(IceAndFire.MODID, "dragonforge_" + dragonType.getName() + "_brick");
     }
 
     @Override
@@ -51,24 +51,19 @@ public class BlockDragonforgeInput extends BlockContainer implements IDragonProo
             playerIn.openGui(IceAndFire.INSTANCE, 7, worldIn, forge.getPos().getX(), forge.getPos().getY(), forge.getPos().getZ());
             return true;
         }
-        return true;
+        return false;
     }
 
     @Nullable
     private TileEntityDragonforge getConnectedForge(World worldIn, BlockPos pos) {
         for (EnumFacing facing : EnumFacing.VALUES) {
             TileEntity te = worldIn.getTileEntity(pos.offset(facing));
-            if (te instanceof TileEntityDragonforge) return (TileEntityDragonforge) te;
+            if (te instanceof TileEntityDragonforge) {
+                TileEntityDragonforge forge = (TileEntityDragonforge) te;
+                if (forge.assembled()) return forge;
+            }
         }
         return null;
-    }
-
-    @Override
-    public void neighborChanged(IBlockState state, World worldIn, BlockPos pos, Block blockIn, BlockPos fromPos) {
-        TileEntity te = worldIn.getTileEntity(pos);
-        if (te instanceof TileEntityDragonforgeInput) {
-            ((TileEntityDragonforgeInput) te).resetCore();
-        }
     }
 
     @Override
@@ -78,22 +73,22 @@ public class BlockDragonforgeInput extends BlockContainer implements IDragonProo
 
     @Override
     public IBlockState getStateFromMeta(int meta) {
-        return this.getDefaultState().withProperty(ACTIVE, meta > 0);
+        return this.getDefaultState().withProperty(GRILL, meta > 0);
     }
 
     @Override
     public int getMetaFromState(IBlockState state) {
-        return state.getValue(ACTIVE) ? 1 : 0;
+        return state.getValue(GRILL) ? 1 : 0;
     }
 
     @Override
     protected BlockStateContainer createBlockState() {
-        return new BlockStateContainer(this, ACTIVE);
+        return new BlockStateContainer(this, GRILL);
     }
 
     @Nullable
     @Override
     public TileEntity createNewTileEntity(World worldIn, int meta) {
-        return new TileEntityDragonforgeInput();
+        return new TileEntityDragonforgeBrick();
     }
 }

@@ -31,18 +31,18 @@ public class IceAndFireJEIPlugin implements IModPlugin {
     public void register(IModRegistry registry) {
         registry.addRecipes(IafDragonForgeRecipeRegistry.FIRE_FORGE_RECIPES, FIRE_DRAGON_FORGE_ID);
         registry.handleRecipes(DragonForgeRecipe.class, DragonForgeRecipeWrapper::new, FIRE_DRAGON_FORGE_ID);
-        registry.addRecipeCatalyst(new ItemStack(IafBlockRegistry.dragonforge_core_fire), FIRE_DRAGON_FORGE_ID);
-        registry.addRecipeCatalyst(new ItemStack(IafBlockRegistry.dragonforge_core), FIRE_DRAGON_FORGE_ID);
+        registry.addRecipeCatalyst(new ItemStack(IafBlockRegistry.dragonforge_fire_core), FIRE_DRAGON_FORGE_ID);
+        registry.addRecipeCatalyst(new ItemStack(IafBlockRegistry.dragonforge_fire_core_disabled), FIRE_DRAGON_FORGE_ID);
 
         registry.addRecipes(IafDragonForgeRecipeRegistry.ICE_FORGE_RECIPES, ICE_DRAGON_FORGE_ID);
         registry.handleRecipes(DragonForgeRecipe.class, DragonForgeRecipeWrapper::new, ICE_DRAGON_FORGE_ID);
-        registry.addRecipeCatalyst(new ItemStack(IafBlockRegistry.dragonforge_core_ice), ICE_DRAGON_FORGE_ID);
-        registry.addRecipeCatalyst(new ItemStack(IafBlockRegistry.dragonforge_core), ICE_DRAGON_FORGE_ID);
+        registry.addRecipeCatalyst(new ItemStack(IafBlockRegistry.dragonforge_ice_core), ICE_DRAGON_FORGE_ID);
+        registry.addRecipeCatalyst(new ItemStack(IafBlockRegistry.dragonforge_ice_core_disabled), ICE_DRAGON_FORGE_ID);
 
         registry.addRecipes(IafDragonForgeRecipeRegistry.LIGHTNING_FORGE_RECIPES, LIGHTNING_DRAGON_FORGE_ID);
         registry.handleRecipes(DragonForgeRecipe.class, DragonForgeRecipeWrapper::new, LIGHTNING_DRAGON_FORGE_ID);
-        registry.addRecipeCatalyst(new ItemStack(IafBlockRegistry.dragonforge_core_lightning), LIGHTNING_DRAGON_FORGE_ID);
-        registry.addRecipeCatalyst(new ItemStack(IafBlockRegistry.dragonforge_core), LIGHTNING_DRAGON_FORGE_ID);
+        registry.addRecipeCatalyst(new ItemStack(IafBlockRegistry.dragonforge_lightning_core), LIGHTNING_DRAGON_FORGE_ID);
+        registry.addRecipeCatalyst(new ItemStack(IafBlockRegistry.dragonforge_lightning_core_disabled), LIGHTNING_DRAGON_FORGE_ID);
 
 		addDescription(registry, new ItemStack(IafItemRegistry.fire_dragon_blood));
 		addDescription(registry, new ItemStack(IafItemRegistry.ice_dragon_blood));

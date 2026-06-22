@@ -109,9 +109,19 @@ tile.iceandfire.dreadwood_planks_lock.name=Cerradura aterradora
 tile.iceandfire.dread_spawner.name=Generador de criaturas de piedra del horror
 tile.iceandfire.monster_spawner.name=Generador de criaturas
 
-tile.iceandfire.dragonforge_core.name=Nucleo de Forja Draconica
-tile.iceandfire.dragonforge_vent.name=Respiradero de Forja Draconica
-tile.iceandfire.dragonforge_input.name=Abertura de Forja Draconica
+tile.iceandfire.dragonforge_fire_brick.name=Ladrillo de Forja de Fuego
+tile.iceandfire.dragonforge_ice_brick.name=Ladrillo de Forja de Hielo
+tile.iceandfire.dragonforge_lightning_brick.name=Ladrillo de Forja de Rayo
+tile.iceandfire.dragonforge_fire_core.name=Nucleo de Forja de Fuego
+tile.iceandfire.dragonforge_ice_core.name=Nucleo de Forja de Hielo
+tile.iceandfire.dragonforge_lightning_core.name=Nucleo de Forja de Rayo
+tile.iceandfire.dragonforge_fire_core_disabled.name=Nucleo de Forja de Fuego (Apagado)
+tile.iceandfire.dragonforge_ice_core_disabled.name=Nucleo de Forja de Hielo (Apagado)
+tile.iceandfire.dragonforge_lightning_core_disabled.name=Nucleo de Forja de Rayo (Apagado)
+tile.iceandfire.dragonforge_fire_input.name=Abertura de Forja de Fuego
+tile.iceandfire.dragonforge_ice_input.name=Abertura de Forja de Hielo
+tile.iceandfire.dragonforge_lightning_input.name=Abertura de Forja de Rayo
+container.dragonforge=Forja de Dragon
 
 item.iceandfire.bestiary.name=Bestiario
 item.iceandfire.manuscript.name=Manuscrito

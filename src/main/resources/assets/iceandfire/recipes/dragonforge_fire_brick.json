@@ -1,0 +1,10 @@
+﻿{
+  "type": "forge:ore_shaped",
+  "pattern": ["SBS","BDB","SBS"],
+  "key": {
+    "S": {"type": "forge:ore_dict", "ore": "fireDragonScaleBlock"},
+    "B": {"type": "forge:ore_dict", "ore": "stonebrick"},
+    "D": {"item": "iceandfire:fire_dragon_blood"}
+  },
+  "result": {"item": "iceandfire:dragonforge_fire_brick", "count": 4}
+}

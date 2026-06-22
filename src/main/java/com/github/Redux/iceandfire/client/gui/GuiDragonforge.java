@@ -34,7 +34,7 @@ public class GuiDragonforge extends GuiContainer {
     @Override
     protected void drawGuiContainerForegroundLayer(int mouseX, int mouseY) {
         if (tileFurnace != null) {
-            String s = I18n.format("tile.iceandfire.dragonforge_core.name");
+            String s = I18n.format("container.dragonforge");
             this.fontRenderer.drawString(s, this.xSize / 2 - this.fontRenderer.getStringWidth(s) / 2, 6, 4210752);
         }
         this.fontRenderer.drawString(this.playerInventory.getDisplayName().getUnformattedText(), 8, this.ySize - 96 + 2, 4210752);

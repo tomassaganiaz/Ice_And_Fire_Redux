@@ -1,0 +1,9 @@
+﻿{
+  "type": "forge:ore_shaped",
+  "pattern": ["BBB","BHB","BBB"],
+  "key": {
+    "B": {"item": "iceandfire:dragonforge_lightning_brick"},
+    "H": {"item": "iceandfire:lightning_dragon_heart"}
+  },
+  "result": {"item": "iceandfire:dragonforge_lightning_core_disabled"}
+}

@@ -108,9 +108,19 @@ tile.iceandfire.dreadwood_planks_lock.name=Dreadwood Keyhole
 tile.iceandfire.dread_spawner.name=Dreadstone Mob Spawner
 tile.iceandfire.monster_spawner.name=Mob Spawner
 
-tile.iceandfire.dragonforge_core.name=Dragonforge Core
-tile.iceandfire.dragonforge_vent.name=Dragonforge Vent
-tile.iceandfire.dragonforge_input.name=Dragonforge Aperture
+tile.iceandfire.dragonforge_fire_brick.name=Fire Dragonforge Brick
+tile.iceandfire.dragonforge_ice_brick.name=Ice Dragonforge Brick
+tile.iceandfire.dragonforge_lightning_brick.name=Lightning Dragonforge Brick
+tile.iceandfire.dragonforge_fire_core.name=Fire Dragonforge Core
+tile.iceandfire.dragonforge_ice_core.name=Ice Dragonforge Core
+tile.iceandfire.dragonforge_lightning_core.name=Lightning Dragonforge Core
+tile.iceandfire.dragonforge_fire_core_disabled.name=Fire Dragonforge Core (Disabled)
+tile.iceandfire.dragonforge_ice_core_disabled.name=Ice Dragonforge Core (Disabled)
+tile.iceandfire.dragonforge_lightning_core_disabled.name=Lightning Dragonforge Core (Disabled)
+tile.iceandfire.dragonforge_fire_input.name=Fire Dragonforge Aperture
+tile.iceandfire.dragonforge_ice_input.name=Ice Dragonforge Aperture
+tile.iceandfire.dragonforge_lightning_input.name=Lightning Dragonforge Aperture
+container.dragonforge=Ice and Fire Dragonforge
 
 item.iceandfire.bestiary.name=Bestiary
 item.iceandfire.manuscript.name=Manuscript

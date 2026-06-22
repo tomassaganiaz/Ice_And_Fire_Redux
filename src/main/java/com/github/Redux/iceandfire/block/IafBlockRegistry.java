@@ -178,18 +178,30 @@ public class IafBlockRegistry {
 	public static Block dread_spawner = new BlockDreadSpawner();
 	@GameRegistry.ObjectHolder(IceAndFire.MODID + ":monster_spawner")
 	public static Block monster_spawner = new BlockMonsterSpawner();
-	@GameRegistry.ObjectHolder(IceAndFire.MODID + ":dragonforge_vent")
-	public static Block dragonforge_vent = new BlockDragonforgeVent();
-	@GameRegistry.ObjectHolder(IceAndFire.MODID + ":dragonforge_input")
-	public static Block dragonforge_input = new BlockDragonforgeInput();
-	@GameRegistry.ObjectHolder(IceAndFire.MODID + ":dragonforge_core_fire")
-	public static Block dragonforge_core_fire = new BlockDragonforgeCore(EnumDragonType.FIRE);
-	@GameRegistry.ObjectHolder(IceAndFire.MODID + ":dragonforge_core_ice")
-	public static Block dragonforge_core_ice = new BlockDragonforgeCore(EnumDragonType.ICE);
-	@GameRegistry.ObjectHolder(IceAndFire.MODID + ":dragonforge_core_lightning")
-	public static Block dragonforge_core_lightning = new BlockDragonforgeCore(EnumDragonType.LIGHTNING);
-	@GameRegistry.ObjectHolder(IceAndFire.MODID + ":dragonforge_core")
-	public static Block dragonforge_core = new BlockDragonforgeCore();
+	@GameRegistry.ObjectHolder(IceAndFire.MODID + ":dragonforge_fire_brick")
+	public static Block dragonforge_fire_brick = new BlockDragonforgeBricks(EnumDragonType.FIRE);
+	@GameRegistry.ObjectHolder(IceAndFire.MODID + ":dragonforge_ice_brick")
+	public static Block dragonforge_ice_brick = new BlockDragonforgeBricks(EnumDragonType.ICE);
+	@GameRegistry.ObjectHolder(IceAndFire.MODID + ":dragonforge_lightning_brick")
+	public static Block dragonforge_lightning_brick = new BlockDragonforgeBricks(EnumDragonType.LIGHTNING);
+	@GameRegistry.ObjectHolder(IceAndFire.MODID + ":dragonforge_fire_input")
+	public static Block dragonforge_fire_input = new BlockDragonforgeInput(EnumDragonType.FIRE);
+	@GameRegistry.ObjectHolder(IceAndFire.MODID + ":dragonforge_ice_input")
+	public static Block dragonforge_ice_input = new BlockDragonforgeInput(EnumDragonType.ICE);
+	@GameRegistry.ObjectHolder(IceAndFire.MODID + ":dragonforge_lightning_input")
+	public static Block dragonforge_lightning_input = new BlockDragonforgeInput(EnumDragonType.LIGHTNING);
+	@GameRegistry.ObjectHolder(IceAndFire.MODID + ":dragonforge_fire_core_disabled")
+	public static Block dragonforge_fire_core_disabled = new BlockDragonforgeCore(EnumDragonType.FIRE, false);
+	@GameRegistry.ObjectHolder(IceAndFire.MODID + ":dragonforge_ice_core_disabled")
+	public static Block dragonforge_ice_core_disabled = new BlockDragonforgeCore(EnumDragonType.ICE, false);
+	@GameRegistry.ObjectHolder(IceAndFire.MODID + ":dragonforge_lightning_core_disabled")
+	public static Block dragonforge_lightning_core_disabled = new BlockDragonforgeCore(EnumDragonType.LIGHTNING, false);
+	@GameRegistry.ObjectHolder(IceAndFire.MODID + ":dragonforge_fire_core")
+	public static Block dragonforge_fire_core = new BlockDragonforgeCore(EnumDragonType.FIRE, true);
+	@GameRegistry.ObjectHolder(IceAndFire.MODID + ":dragonforge_ice_core")
+	public static Block dragonforge_ice_core = new BlockDragonforgeCore(EnumDragonType.ICE, true);
+	@GameRegistry.ObjectHolder(IceAndFire.MODID + ":dragonforge_lightning_core")
+	public static Block dragonforge_lightning_core = new BlockDragonforgeCore(EnumDragonType.LIGHTNING, true);
 	@GameRegistry.ObjectHolder(IceAndFire.MODID + ":dragonsteel_fire_block")
 	public static Block dragonsteel_fire_block = new BlockGeneric(Material.IRON, "dragonsteel_fire_block", "iceandfire.dragonsteel_fire_block", "pickaxe", 3, 50.0F, 2000.0F, SoundType.METAL);
 	@GameRegistry.ObjectHolder(IceAndFire.MODID + ":dragonsteel_ice_block")
@@ -201,9 +213,9 @@ public class IafBlockRegistry {
 		GameRegistry.registerTileEntity(TileEntityDummyGorgonHead.class, new ResourceLocation(IceAndFire.MODID, "dummyGorgonHeadIdle"));
 		GameRegistry.registerTileEntity(TileEntityDummyGorgonHeadActive.class, new ResourceLocation(IceAndFire.MODID, "dummyGorgonHeadActive"));
 		GameRegistry.registerTileEntity(TileEntityMyrmexCocoon.class, new ResourceLocation(IceAndFire.MODID, "myrmexCocoon"));
-		GameRegistry.registerTileEntity(TileEntityDragonforge.class, new ResourceLocation(IceAndFire.MODID, "dragonforge"));
-		GameRegistry.registerTileEntity(TileEntityDragonforgeInput.class, new ResourceLocation(IceAndFire.MODID, "dragonforgeInput"));
-		GameRegistry.registerTileEntity(TileEntityDragonforgeVent.class, new ResourceLocation(IceAndFire.MODID, "dragonforgeVent"));
+		GameRegistry.registerTileEntity(TileEntityDragonforge.class, new ResourceLocation(IceAndFire.MODID, "dragonforge_core"));
+		GameRegistry.registerTileEntity(TileEntityDragonforgeInput.class, new ResourceLocation(IceAndFire.MODID, "dragonforge_input"));
+		GameRegistry.registerTileEntity(TileEntityDragonforgeBrick.class, new ResourceLocation(IceAndFire.MODID, "dragonforge_brick"));
 		GameRegistry.registerTileEntity(TileEntityGhostChest.class, new ResourceLocation(IceAndFire.MODID, "ghostChest"));
 	}
 }

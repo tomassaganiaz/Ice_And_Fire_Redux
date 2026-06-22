@@ -1,6 +1,6 @@
 package com.github.Redux.iceandfire.entity.tile;
 
-import com.github.Redux.iceandfire.block.BlockDragonforgeVent;
+import com.github.Redux.iceandfire.block.BlockDragonforgeBricks;
 import com.github.Redux.iceandfire.block.BlockDragonforgeCore;
 import com.github.Redux.iceandfire.block.BlockDragonforgeInput;
 import com.github.Redux.iceandfire.block.IafBlockRegistry;
@@ -38,8 +38,18 @@ public class TileEntityDragonforge extends TileEntity implements ITickable, ISid
     public int cookTime = 0;
     public int lastFlameTimer = 0;
     public boolean cookUntilCompletion = false;
+    public EnumDragonType dragonType;
 
     public TileEntityDragonforge() {
+        this(null);
+    }
+
+    public TileEntityDragonforge(EnumDragonType dragonType) {
+        this.dragonType = dragonType;
+    }
+
+    public boolean isType(EnumDragonType type) {
+        return type != null && type == dragonType;
     }
 
     @Override
@@ -59,16 +69,19 @@ public class TileEntityDragonforge extends TileEntity implements ITickable, ISid
     }
 
     private void updateBlocks() {
+        if (dragonType == null) return;
         for (EnumFacing facing : EnumFacing.HORIZONTALS) {
             BlockPos blockPos = this.getPos().offset(facing);
             Block block = world.getBlockState(blockPos).getBlock();
-            if (block instanceof BlockDragonforgeVent) {
-                IBlockState grillState = IafBlockRegistry.dragonforge_vent.getDefaultState().withProperty(BlockDragonforgeVent.GRILL, BlockDragonforgeVent.getMetaFromType(getType()));
+            if (block instanceof BlockDragonforgeBricks) {
+                boolean active = isBurning() && lastFlameTimer > 0;
+                IBlockState grillState = block.getDefaultState().withProperty(BlockDragonforgeBricks.GRILL, active);
                 if (world.getBlockState(blockPos) != grillState) {
                     world.setBlockState(blockPos, grillState);
                 }
             } else if (block instanceof BlockDragonforgeInput) {
-                IBlockState inputState = IafBlockRegistry.dragonforge_input.getDefaultState().withProperty(BlockDragonforgeInput.ACTIVE, BlockDragonforgeInput.getMetaFromType(getType()));
+                boolean active = lastFlameTimer > 0;
+                IBlockState inputState = block.getDefaultState().withProperty(BlockDragonforgeInput.ACTIVE, active);
                 if (world.getBlockState(blockPos) != inputState) {
                     world.setBlockState(blockPos, inputState);
                 }
@@ -128,9 +141,23 @@ public class TileEntityDragonforge extends TileEntity implements ITickable, ISid
         return this.cookTime > 0;
     }
 
+    private int assemblyCheckTimer = 0;
+
     @Override
     public void update() {
         if (!this.world.isRemote) {
+            assemblyCheckTimer++;
+            if (assemblyCheckTimer >= 40) {
+                assemblyCheckTimer = 0;
+                boolean isAssembled = assembled();
+                boolean coreActive = world.getBlockState(pos).getBlock() instanceof BlockDragonforgeCore && ((BlockDragonforgeCore) world.getBlockState(pos).getBlock()).isActivated();
+                if (isAssembled && !coreActive) {
+                    BlockDragonforgeCore.setState(dragonType, true, world, pos);
+                } else if (!isAssembled && coreActive) {
+                    BlockDragonforgeCore.setState(dragonType, false, world, pos);
+                }
+            }
+
             boolean flag = this.isBurning();
             boolean flag1 = false;
 
@@ -156,11 +183,11 @@ public class TileEntityDragonforge extends TileEntity implements ITickable, ISid
                         flag1 = true;
                     }
                 }
-            } else {
-                if (this.getType() != null) {
-                    this.updateBlockState(null);
-                }
+        } else {
+            if (getType() != null && lastFlameTimer <= 0 && cookTime <= 0) {
+                BlockDragonforgeCore.setState(dragonType, false, world, pos);
             }
+        }
 
             if (flag != this.isBurning()) {
                 flag1 = true;
@@ -173,19 +200,11 @@ public class TileEntityDragonforge extends TileEntity implements ITickable, ISid
     }
 
     public void updateBlockState(EnumDragonType type) {
-        this.blockType = BlockDragonforgeCore.setState(type, world, pos, this);
+        BlockDragonforgeCore.setState(type, type != null, world, pos);
     }
 
     public EnumDragonType getType() {
-        Block block = this.world.getBlockState(this.pos).getBlock();
-        if (block == IafBlockRegistry.dragonforge_core_fire) {
-            return EnumDragonType.FIRE;
-        } else if (block == IafBlockRegistry.dragonforge_core_ice) {
-            return EnumDragonType.ICE;
-        } else if (block == IafBlockRegistry.dragonforge_core_lightning) {
-            return EnumDragonType.LIGHTNING;
-        }
-        return null;
+        return dragonType;
     }
 
     public int getMaxCookTime() {
@@ -329,8 +348,8 @@ public class TileEntityDragonforge extends TileEntity implements ITickable, ISid
     public void transferPower(EnumDragonType type) {
         if (this.canSmelt(type)) {
             EnumDragonType currentType = getType();
-            if (currentType == null) {
-                this.updateBlockState(type);
+            if (currentType == null || dragonType != type) {
+                this.dragonType = type;
             }
 
             if (this.lastFlameTimer != 40) {
@@ -353,23 +372,42 @@ public class TileEntityDragonforge extends TileEntity implements ITickable, ISid
     }
 
     private boolean checkBrickCorners(BlockPos pos) {
-        return doesBlockEqual(pos.north().east(), IafBlockRegistry.dread_stone_bricks_double_slab, IafBlockRegistry.dread_stone_bricks) &&
-                doesBlockEqual(pos.north().west(), IafBlockRegistry.dread_stone_bricks_double_slab, IafBlockRegistry.dread_stone_bricks) &&
-                doesBlockEqual(pos.south().east(), IafBlockRegistry.dread_stone_bricks_double_slab, IafBlockRegistry.dread_stone_bricks) &&
-                doesBlockEqual(pos.south().west(), IafBlockRegistry.dread_stone_bricks_double_slab, IafBlockRegistry.dread_stone_bricks);
+        return doesBlockEqual(pos.north().east(), getBrickBlock()) &&
+                doesBlockEqual(pos.north().west(), getBrickBlock()) &&
+                doesBlockEqual(pos.south().east(), getBrickBlock()) &&
+                doesBlockEqual(pos.south().west(), getBrickBlock());
     }
 
     private boolean checkBrickSlots(BlockPos pos) {
-        return doesBlockEqual(pos.north(), IafBlockRegistry.dread_stone_bricks_double_slab, IafBlockRegistry.dread_stone_bricks) &&
-                doesBlockEqual(pos.east(), IafBlockRegistry.dread_stone_bricks_double_slab, IafBlockRegistry.dread_stone_bricks) &&
-                doesBlockEqual(pos.west(), IafBlockRegistry.dread_stone_bricks_double_slab, IafBlockRegistry.dread_stone_bricks) &&
-                doesBlockEqual(pos.south(), IafBlockRegistry.dread_stone_bricks_double_slab, IafBlockRegistry.dread_stone_bricks);
+        return doesBlockEqual(pos.north(), getBrickBlock()) &&
+                doesBlockEqual(pos.east(), getBrickBlock()) &&
+                doesBlockEqual(pos.west(), getBrickBlock()) &&
+                doesBlockEqual(pos.south(), getBrickBlock());
     }
 
     public boolean assembled() {
+        if (dragonType == null) return false;
         return checkBoneCorners(pos.down()) && checkBrickSlots(pos.down()) &&
-                checkBrickCorners(pos) && checkVents(pos) &&
+                checkBrickCorners(pos) && atleastThreeBricks(pos) &&
                 checkBoneCorners(pos.up()) && checkBrickSlots(pos.up());
+    }
+
+    private Block getBrickBlock() {
+        if (dragonType == EnumDragonType.FIRE) return IafBlockRegistry.dragonforge_fire_brick;
+        if (dragonType == EnumDragonType.ICE) return IafBlockRegistry.dragonforge_ice_brick;
+        if (dragonType == EnumDragonType.LIGHTNING) return IafBlockRegistry.dragonforge_lightning_brick;
+        return IafBlockRegistry.dragonforge_fire_brick;
+    }
+
+    private boolean atleastThreeBricks(BlockPos pos) {
+        int count = 0;
+        for (EnumFacing facing : EnumFacing.HORIZONTALS) {
+            Block block = world.getBlockState(pos.offset(facing)).getBlock();
+            if (block instanceof BlockDragonforgeBricks) {
+                count++;
+            }
+        }
+        return count > 2;
     }
 
     @Override
@@ -384,16 +422,5 @@ public class TileEntityDragonforge extends TileEntity implements ITickable, ISid
             }
         }
         return false;
-    }
-
-    private boolean checkVents(BlockPos pos) {
-        int count = 0;
-        for (EnumFacing facing : EnumFacing.HORIZONTALS) {
-            Block block = world.getBlockState(pos.offset(facing)).getBlock();
-            if (block == IafBlockRegistry.dragonforge_vent) {
-                count++;
-            }
-        }
-        return count > 2;
     }
 }

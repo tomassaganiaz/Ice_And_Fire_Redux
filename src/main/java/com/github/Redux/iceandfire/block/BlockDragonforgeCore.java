@@ -23,37 +23,55 @@ import net.minecraft.world.World;
 
 import javax.annotation.Nullable;
 import java.util.Random;
-/** Bloque Dragonforge Core */
-
 
 public class BlockDragonforgeCore extends BlockContainer implements IDragonProof {
     private static boolean keepInventory;
 
-    EnumDragonType type;
+    final EnumDragonType type;
+    final boolean activated;
 
-    public BlockDragonforgeCore() {
-        this(null);
-    }
-
-    public BlockDragonforgeCore(EnumDragonType type) {
+    public BlockDragonforgeCore(EnumDragonType type, boolean activated) {
         super(Material.IRON);
         this.setHardness(40F);
         this.setResistance(500F);
         this.setSoundType(SoundType.METAL);
-        if (type == null) {
+        this.type = type;
+        this.activated = activated;
+        if (!activated) {
             this.setCreativeTab(IceAndFire.TAB_BLOCKS);
         }
-        this.setTranslationKey("iceandfire.dragonforge_core");
-        StringBuilder sb = new StringBuilder("dragonforge_core");
-        if (type != null) {
-            sb.append("_");
-            sb.append(type.name().toLowerCase());
-        }
-        this.setRegistryName(IceAndFire.MODID, sb.toString());
-        if (type != null) {
+        this.setTranslationKey("iceandfire.dragonforge_" + type.getName() + "_core" + (activated ? "" : "_disabled"));
+        this.setRegistryName(IceAndFire.MODID, "dragonforge_" + type.getName() + "_core" + (activated ? "" : "_disabled"));
+        if (activated) {
             this.setLightLevel(1.0F);
         }
-        this.type = type;
+    }
+
+    public static void setState(EnumDragonType type, boolean active, World worldIn, BlockPos pos) {
+        TileEntity te = worldIn.getTileEntity(pos);
+        keepInventory = true;
+
+        if (type == EnumDragonType.FIRE) {
+            worldIn.setBlockState(pos, (active ? IafBlockRegistry.dragonforge_fire_core : IafBlockRegistry.dragonforge_fire_core_disabled).getDefaultState(), 3);
+            worldIn.setBlockState(pos, (active ? IafBlockRegistry.dragonforge_fire_core : IafBlockRegistry.dragonforge_fire_core_disabled).getDefaultState(), 3);
+        } else if (type == EnumDragonType.ICE) {
+            worldIn.setBlockState(pos, (active ? IafBlockRegistry.dragonforge_ice_core : IafBlockRegistry.dragonforge_ice_core_disabled).getDefaultState(), 3);
+            worldIn.setBlockState(pos, (active ? IafBlockRegistry.dragonforge_ice_core : IafBlockRegistry.dragonforge_ice_core_disabled).getDefaultState(), 3);
+        } else if (type == EnumDragonType.LIGHTNING) {
+            worldIn.setBlockState(pos, (active ? IafBlockRegistry.dragonforge_lightning_core : IafBlockRegistry.dragonforge_lightning_core_disabled).getDefaultState(), 3);
+            worldIn.setBlockState(pos, (active ? IafBlockRegistry.dragonforge_lightning_core : IafBlockRegistry.dragonforge_lightning_core_disabled).getDefaultState(), 3);
+        }
+
+        keepInventory = false;
+
+        if (te != null) {
+            te.validate();
+            worldIn.setTileEntity(pos, te);
+        }
+    }
+
+    public boolean isActivated() {
+        return activated;
     }
 
     @Override
@@ -61,51 +79,28 @@ public class BlockDragonforgeCore extends BlockContainer implements IDragonProof
         return EnumPushReaction.BLOCK;
     }
 
-    public static Block setState(EnumDragonType type, World worldIn, BlockPos pos, TileEntityDragonforge core) {
-        keepInventory = true;
-
-        Block block;
-        if (type == EnumDragonType.FIRE) {
-            block = IafBlockRegistry.dragonforge_core_fire;
-        } else if (type == EnumDragonType.ICE) {
-            block = IafBlockRegistry.dragonforge_core_ice;
-        } else if (type == EnumDragonType.LIGHTNING) {
-            block = IafBlockRegistry.dragonforge_core_lightning;
-        } else {
-            block = IafBlockRegistry.dragonforge_core;
-        }
-
-        worldIn.setBlockState(pos, block.getDefaultState(), 3);
-        worldIn.setBlockState(pos, block.getDefaultState(), 3);
-
-        keepInventory = false;
-
-        if (core != null) {
-            core.validate();
-            worldIn.setTileEntity(pos, core);
-        }
-
-        return block;
-    }
-
     @Override
     public boolean onBlockActivated(World worldIn, BlockPos pos, IBlockState state, EntityPlayer playerIn, EnumHand hand, EnumFacing side, float hitX, float hitY, float hitZ) {
-        if (playerIn.isSneaking()) {
-            return false;
-        } else {
-            playerIn.openGui(IceAndFire.INSTANCE, 7, worldIn, pos.getX(), pos.getY(), pos.getZ());
-            return true;
-        }
+        if (playerIn.isSneaking()) return false;
+        playerIn.openGui(IceAndFire.INSTANCE, 7, worldIn, pos.getX(), pos.getY(), pos.getZ());
+        return true;
     }
 
     @Override
     public Item getItemDropped(IBlockState state, Random rand, int fortune) {
-        return Item.getItemFromBlock(IafBlockRegistry.dragonforge_core);
+        return Item.getItemFromBlock(getDisabledVariant());
     }
 
     @Override
     public ItemStack getItem(World worldIn, BlockPos pos, IBlockState state) {
-        return new ItemStack(Item.getItemFromBlock(IafBlockRegistry.dragonforge_core));
+        return new ItemStack(getDisabledVariant());
+    }
+
+    private Block getDisabledVariant() {
+        if (type == EnumDragonType.FIRE) return IafBlockRegistry.dragonforge_fire_core_disabled;
+        if (type == EnumDragonType.ICE) return IafBlockRegistry.dragonforge_ice_core_disabled;
+        if (type == EnumDragonType.LIGHTNING) return IafBlockRegistry.dragonforge_lightning_core_disabled;
+        return IafBlockRegistry.dragonforge_fire_core_disabled;
     }
 
     @Override
@@ -120,7 +115,7 @@ public class BlockDragonforgeCore extends BlockContainer implements IDragonProof
 
     @Override
     public TileEntity createNewTileEntity(World worldIn, int meta) {
-        return new TileEntityDragonforge();
+        return new TileEntityDragonforge(type);
     }
 
     @Override
@@ -132,7 +127,6 @@ public class BlockDragonforgeCore extends BlockContainer implements IDragonProof
                 worldIn.updateComparatorOutputLevel(pos, this);
             }
         }
-
         super.breakBlock(worldIn, pos, state);
     }
 
